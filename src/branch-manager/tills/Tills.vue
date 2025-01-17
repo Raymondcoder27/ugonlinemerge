@@ -56,7 +56,7 @@ const jumpToPage = () => {
 
 // Helper function to get manager by branch
 const getOperatorByTill = (tillName) => {
-  return accountStore.managerAccounts.find(
+  return accountStore.tillOperatorAccounts.find(
     (operator) => operator.till === tillName
   );
 };
@@ -192,9 +192,9 @@ const assignOperatorsToTills = () => {
 onMounted(() => {
   loading.value = true;
   fetchTills();
-  accountStore.fetchManagerAccounts();
+  // accountStore.fetchManagerAccounts();
   tillStore.fetchTills();
-  accountStore.fetchManagerAccounts();
+  accountStore.fetchTillOperatorAccounts();
   // allocateManager();
   assignOperatorsToTills();
 });

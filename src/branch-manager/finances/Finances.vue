@@ -83,7 +83,7 @@ function select(tab: string) {
         :class="activeTab == 'tillbalance' ? 'w-2/12 tab-active' : 'w-2/12 tab'"
         @click="select('tillbalance')"
       >
-        Till Balance
+        <!-- Till Balance -->
       </div>
     </div>
     <div class="flex flex-grow">

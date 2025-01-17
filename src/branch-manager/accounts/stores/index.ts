@@ -405,7 +405,7 @@ export const useAccounts = defineStore("user-management", () => {
     fetchUserAccounts,
     // fetchManagerAccounts,
     fetchTillOperatorAccounts,
-    addManagerAccount,
+    // addManagerAccount,
     addBackOfficeAccount,
     // allocateManager,
     resendAccountVerification
