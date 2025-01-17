@@ -111,7 +111,7 @@ export const useAccounts = defineStore("user-management", () => {
     });
 
     // Update the manager's till
-    const manager = managerAccounts.value.find((manager) => manager.id === payload.managerId);
+    const manager = tillOperatorAccounts.value.find((manager) => manager.id === payload.managerId);
     if (manager) {
       manager.till = payload.tillId;
       localStorageManagerAccount.value = manager; // Update the local storage variable
@@ -172,8 +172,8 @@ export const useAccounts = defineStore("user-management", () => {
   // }
 
   // add manager account, push to the manager account array
-  const addManagerAccount = (newManager: ManagerAccount) => {
-    managerAccounts.value.push(
+  const addTillOperatorAccount = (newManager: ManagerAccount) => {
+    tillOperatorAccounts.value.push(
       {
         // id:  floatAllocations.value.length + 1,
         id: managerAccounts.value.length + 1,
@@ -331,7 +331,7 @@ export const useAccounts = defineStore("user-management", () => {
 
     // if (user && till) {
     if (user && till) {
-      managerAccounts.value.push({
+      tillOperatorAccounts.value.push({
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,

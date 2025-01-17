@@ -15,6 +15,14 @@ export type TopMenuLink = {
   children?: SideMenuLink[];
 };
 
+export type AllocateTillOperator = {
+  id: number;
+  dateAssigned: string;
+  till: string;
+  manager: string;
+  status: string;
+}
+
 export interface AccountResponse {
   createdAt: string
   emailVerified: boolean
