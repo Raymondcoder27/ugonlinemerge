@@ -28,7 +28,7 @@ accountStore.fetchBackofficeAccounts();
 const totalServiceSubscriptions = servicesStore.subscribedServices?.length || 0;
 const totalTransactions = billingStore.transactions?.length || 0;
 const totalBranches = tillStore.tills?.length || 0;
-const totalBranchManagers = accountStore.tillOperatorAccounts?.length || 0;
+const totalTillOperators = accountStore.tillOperatorAccounts?.length || 0;
 const totalBackOfficeAccounts = accountStore.backofficeAccounts?.length || 0;
 
 // Call the fetch function on mounted
@@ -161,4 +161,5 @@ onMounted(async () => {
 .tab:hover {
   @apply bg-gray-50 text-gray-600 rounded-t-xl;
 }
-</style>@/branchmanager/balance/stores@/branchmanager/services/stores@/branchmanager/tills/stores@/branchmanager/accounts/stores@/branchmanager/finances/stores
+</style>
+<!-- @/branchmanager/balance/stores@/branchmanager/services/stores@/branchmanager/tills/stores@/branchmanager/accounts/stores@/branchmanager/finances/stores -->
