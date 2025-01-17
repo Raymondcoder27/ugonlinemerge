@@ -233,9 +233,9 @@ export const useAccounts = defineStore("user-management", () => {
   }
 
   // Fetch dummy manager accounts
-  const fetchManagerAccounts = async (filter: IGoFilter) => {
+  const fetchTillOperatorAccounts = async (filter: IGoFilter) => {
     // Here you would normally process the filter if you had real data
-    managerAccounts.value = dummyTillOperatorAccounts;
+    tillOperatorAccounts.value = dummyTillOperatorAccounts;
   }
 
   // Simulating resend account verification
@@ -394,16 +394,20 @@ export const useAccounts = defineStore("user-management", () => {
     response,
     userAccounts,
     backofficeAccounts,
-    managerAccounts,
-    managerAllocations,
+    // managerAccounts,
+    // managerAllocations,
+    tillOperatorAccounts,
+    tillOperatorAllocations,
+    allocateTillOperator,
     assignOperator,
     createAccount,
     fetchBackofficeAccounts,
     fetchUserAccounts,
     fetchManagerAccounts,
+    fetchTillOperatorAccounts,
     addManagerAccount,
     addBackOfficeAccount,
-    allocateManager,
+    // allocateManager,
     resendAccountVerification
   };
 });

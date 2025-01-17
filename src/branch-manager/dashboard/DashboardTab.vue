@@ -23,12 +23,12 @@ const servicesStore = useServicesStore();
 const accountStore = useAccounts();
 tillStore.fetchTills();
 // servicesStore.fetchSubscribedServices();
-accountStore.fetchManagerAccounts();
+accountStore.fetchtillOperatorAccounts();
 accountStore.fetchBackofficeAccounts();
 const totalServiceSubscriptions = servicesStore.subscribedServices?.length || 0;
 const totalTransactions = billingStore.transactions?.length || 0;
 const totalBranches = tillStore.tills?.length || 0;
-const totalBranchManagers = accountStore.managerAccounts?.length || 0;
+const totalBranchManagers = accountStore.tillOperatorAccounts?.length || 0;
 const totalBackOfficeAccounts = accountStore.backofficeAccounts?.length || 0;
 
 // Call the fetch function on mounted
