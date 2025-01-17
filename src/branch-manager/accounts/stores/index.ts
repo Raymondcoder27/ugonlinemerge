@@ -403,7 +403,7 @@ export const useAccounts = defineStore("user-management", () => {
     createAccount,
     fetchBackofficeAccounts,
     fetchUserAccounts,
-    fetchManagerAccounts,
+    // fetchManagerAccounts,
     fetchTillOperatorAccounts,
     addManagerAccount,
     addBackOfficeAccount,
