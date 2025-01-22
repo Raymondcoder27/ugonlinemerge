@@ -1,11 +1,11 @@
 <script setup lang="ts">
 // import type { CreateAccount } from "@/types";
 import { type Ref, ref, reactive, onMounted, defineEmits } from "vue";
-import { useBilling } from "@/branch-manager/finances/stores";
+import { useBilling } from "@/branchmanagerdomain/finances/stores";
 import { useNotificationsStore } from "@/stores/notifications";
-import { useTillStore } from "@/branch-manager/tills/stores";
+import { useTillStore } from "@/branchmanagerdomain/tills/stores";
 import type { AllocateFloat } from "@/types";
-import { useBalance } from "@/branch-manager/balance/stores";
+import { useBalance } from "@/branchmanagerdomain/balance/stores";
 
 const tillStore = useTillStore();
 const balanceStore = useBalance();

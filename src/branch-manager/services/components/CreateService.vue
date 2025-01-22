@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, type Ref, watch } from "vue";
-import { useServicesStore } from "@/branch-manager/services/stores";
-import { useProviderStore } from "@/branch-manager/entities/stores";
-import { useSettingsStore } from "@/branch-manager/settings/stores";
+import { useServicesStore } from "@/branchmanagerdomain/services/stores";
+import { useProviderStore } from "@/branchmanagerdomain/entities/stores";
+import { useSettingsStore } from "@/branchmanagerdomain/settings/stores";
 import { useNotificationsStore } from "@/stores/notifications";
 import type { ApiError } from "@/types";
 

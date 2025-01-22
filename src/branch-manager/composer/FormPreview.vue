@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
-import FormViewer from "@/branch-manager/composer/components/FormViewer.vue";
-import type {ServiceSpecification} from "@/branch-manager/services/types";
+import FormViewer from "@/branchmanagerdomain/composer/components/FormViewer.vue";
+import type {ServiceSpecification} from "@/branchmanagerdomain/services/types";
 import {onMounted, type Ref, ref, watch} from "vue";
 import {useRouter} from "vue-router";
-import {useServicesStore} from "@/branch-manager/services/stores";
-import type {FormSection} from "@/branch-manager/composer/types/formtypes";
+import {useServicesStore} from "@/branchmanagerdomain/services/stores";
+import type {FormSection} from "@/branchmanagerdomain/composer/types/formtypes";
 
 let form:Ref<ServiceSpecification> = ref({
   id: "",

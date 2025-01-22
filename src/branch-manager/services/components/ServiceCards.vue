@@ -1,9 +1,9 @@
   <script setup lang="ts">
 import type { Ref } from "vue";
 import { ref, onMounted, computed } from "vue";
-import { useServicesStore } from "@/branch-manager/services/stores";
-import type { Service } from "@/branch-manager/services/types";
-// import { useProviderStore } from "@/branch-manager/entities/stores";
+import { useServicesStore } from "@/branchmanagerdomain/services/stores";
+import type { Service } from "@/branchmanagerdomain/services/types";
+// import { useProviderStore } from "@/branchmanagerdomain/entities/stores";
 import { useNotificationsStore } from "@/stores/notifications";
 
 const store = useServicesStore();

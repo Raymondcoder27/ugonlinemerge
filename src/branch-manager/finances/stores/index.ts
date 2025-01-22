@@ -2,7 +2,7 @@
 
 import { defineStore } from "pinia";
 import { ref } from "vue";
-import type { Transaction, FloatLedger, BackofficeUser, TillOperator, FloatAllocation, FloatRequest } from "@/branch-manager/finances/types";
+import type { Transaction, FloatLedger, BackofficeUser, TillOperator, FloatAllocation, FloatRequest } from "@/branchmanagerdomain/finances/types";
 import type { AllocateFloat } from "@/types";
 
 export const useBilling = defineStore("billing", () => {

@@ -1,7 +1,7 @@
 import { ref, type Ref } from "vue";
 import { defineStore } from "pinia";
 import api from "@/config/api";
-import type { Till } from "@/branch-manager/tills/types"; // Assuming you have a Till type
+import type { Till } from "@/branchmanagerdomain/tills/types"; // Assuming you have a Till type
 import type { AssignManager } from "@/types";
 
 export const useTillStore = defineStore("useTill", () => {

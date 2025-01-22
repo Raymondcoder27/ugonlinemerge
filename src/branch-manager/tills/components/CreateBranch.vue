@@ -1,6 +1,6 @@
 <!-- <script setup lang="ts">
 import { onMounted, reactive, ref, type Ref } from "vue";
-import { useBranchStore } from "@/branch-manager/tills/stores"; // Adjust the store path if necessary
+import { useBranchStore } from "@/branchmanagerdomain/tills/stores"; // Adjust the store path if necessary
 import { useNotificationsStore } from "@/stores/notifications";
 import type { ApiError } from "@/types";
 
@@ -51,7 +51,7 @@ function submit() {
 
 <script setup lang="ts">
 import { onMounted, reactive, ref, type Ref } from "vue";
-import { useBranchStore } from "@/branch-manager/tills/stores";
+import { useBranchStore } from "@/branchmanagerdomain/tills/stores";
 import { useNotificationsStore } from "@/stores/notifications";
 import type { ApiError } from "@/types";
 

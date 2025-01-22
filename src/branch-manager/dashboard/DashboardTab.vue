@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { onMounted, ref, type Ref } from "vue";
-import FloatLedgers from "@/branch-manager/finances/FloatLedgers.vue";
-import FloatManagement from "@/branch-manager/finances/FloatAllocation.vue";
-import Transactions from "@/branch-manager/finances/Transactions.vue";
-import FloatRequests from "@/branch-manager/finances/FloatRequests.vue";
-import { useBalance } from "@/branch-manager/balance/stores";
+import FloatLedgers from "@/branchmanagerdomain/finances/FloatLedgers.vue";
+import FloatManagement from "@/branchmanagerdomain/finances/FloatAllocation.vue";
+import Transactions from "@/branchmanagerdomain/finances/Transactions.vue";
+import FloatRequests from "@/branchmanagerdomain/finances/FloatRequests.vue";
+import { useBalance } from "@/branchmanagerdomain/balance/stores";
 
-import HomeTab from "@/branch-manager/dashboard/components/HomeTab.vue";
-import UserStatistics from "@/branch-manager/dashboard/views/UserStatistics.vue";
-import BranchStatistics from "@/branch-manager/dashboard/views/BranchStatistics.vue";
-import ServicesStatistics from "@/branch-manager/dashboard/views/ServicesStatistics.vue";
-import RevenueStatistics from "@/branch-manager/dashboard/views/RevenueStatistics.vue";
-import { useServicesStore } from "@/branch-manager/services/stores";
-import { useTillStore } from "@/branch-manager/tills/stores";
-import { useAccounts } from "@/branch-manager/accounts/stores";
-import { useBilling } from "@/branch-manager/finances/stores";
-// import { useBalance } from "@/branch-manager/balance/stores";
+import HomeTab from "@/branchmanagerdomain/dashboard/components/HomeTab.vue";
+import UserStatistics from "@/branchmanagerdomain/dashboard/views/UserStatistics.vue";
+import BranchStatistics from "@/branchmanagerdomain/dashboard/views/BranchStatistics.vue";
+import ServicesStatistics from "@/branchmanagerdomain/dashboard/views/ServicesStatistics.vue";
+import RevenueStatistics from "@/branchmanagerdomain/dashboard/views/RevenueStatistics.vue";
+import { useServicesStore } from "@/branchmanagerdomain/services/stores";
+import { useTillStore } from "@/branchmanagerdomain/tills/stores";
+import { useAccounts } from "@/branchmanagerdomain/accounts/stores";
+import { useBilling } from "@/branchmanagerdomain/finances/stores";
+// import { useBalance } from "@/branchmanagerdomain/balance/stores";
 
 const tillStore = useTillStore();
 const billingStore = useBilling();

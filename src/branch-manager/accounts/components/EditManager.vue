@@ -2,10 +2,10 @@
 
 import type { ManagerAccount } from "@/types";
 import { type Ref, ref, reactive, onMounted } from "vue";
-import { useAccounts } from "@/branch-manager/accounts/stores";
+import { useAccounts } from "@/branchmanagerdomain/accounts/stores";
 import { useNotificationsStore } from "@/stores/notifications";
 import { defineEmits } from "vue";
-import { useTillStore } from "@/branch-manager/tills/stores";
+import { useTillStore } from "@/branchmanagerdomain/tills/stores";
 
 const tillStore = useTillStore();
 

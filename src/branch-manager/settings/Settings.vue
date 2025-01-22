@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref, type Ref} from "vue";
-import ServiceCategories from "@/branch-manager/settings/views/ServiceCategories.vue";
-import AccessibilityTiers from "@/branch-manager/settings/views/AccessibilityTiers.vue";
+import ServiceCategories from "@/branchmanagerdomain/settings/views/ServiceCategories.vue";
+import AccessibilityTiers from "@/branchmanagerdomain/settings/views/AccessibilityTiers.vue";
 
 const activeTab: Ref<string> = ref("service-categories")
 

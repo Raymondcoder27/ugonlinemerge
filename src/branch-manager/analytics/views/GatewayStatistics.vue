@@ -1,13 +1,13 @@
 <script setup lang="ts">
 
-import BarChart from "@/branch-manager/analytics/components/BarChart.vue";
+import BarChart from "@/branchmanagerdomain/analytics/components/BarChart.vue";
 
 import type {Ref} from "vue";
-import type {GraphData, ProviderRegistrationStatistic, Statistic} from "@/branch-manager/analytics/types/chart";
+import type {GraphData, ProviderRegistrationStatistic, Statistic} from "@/branchmanagerdomain/analytics/types/chart";
 import {onMounted, ref, watch} from "vue";
-import {useGatewayReportsStore} from "@/branch-manager/analytics/stores";
+import {useGatewayReportsStore} from "@/branchmanagerdomain/analytics/stores";
 import moment from "moment/moment";
-import AreaChart from "@/branch-manager/analytics/components/AreaChart.vue";
+import AreaChart from "@/branchmanagerdomain/analytics/components/AreaChart.vue";
 
 const store = useGatewayReportsStore()
 const loading: Ref<boolean> = ref(false)

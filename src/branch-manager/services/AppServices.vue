@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useServicesStore } from "@/branch-manager/services/stores";
-import ServiceCards from "@/branch-manager/services/components/ServiceCards.vue";
-import SubscribedServices from "@/branch-manager/services/components/SubscribedServices.vue";
+import { useServicesStore } from "@/branchmanagerdomain/services/stores";
+import ServiceCards from "@/branchmanagerdomain/services/components/ServiceCards.vue";
+import SubscribedServices from "@/branchmanagerdomain/services/components/SubscribedServices.vue";
 import { onMounted, ref, type Ref, watch, computed } from "vue";
 
 const page: Ref<number> = ref(1);

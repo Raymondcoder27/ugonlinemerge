@@ -9,7 +9,7 @@ import type {
   AuthResponseInterface,
   SignInResponseInterface,
   SignUpResponseInterface, UserProfileInterface
-} from "@/branch-manager/auth/types"
+} from "@/branchmanagerdomain/auth/types"
 import { ref, type Ref } from "vue"
 
 export const useAccountStore = defineStore("accounts", () => {

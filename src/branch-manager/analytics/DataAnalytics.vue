@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
-import GatewayStatistics from "@/branch-manager/analytics/views/GatewayStatistics.vue";
+import GatewayStatistics from "@/branchmanagerdomain/analytics/views/GatewayStatistics.vue";
 import {type Ref, ref} from "vue";
-import ProviderStatistics from "@/branch-manager/analytics/views/ProviderStatistics.vue";
-import ServicesStatistics from "@/branch-manager/analytics/views/ServicesStatistics.vue";
-import RevenueStatistics from "@/branch-manager/analytics/views/RevenueStatistics.vue";
-import UserStatistics from "@/branch-manager/analytics/views/UserStatistics.vue";
+import ProviderStatistics from "@/branchmanagerdomain/analytics/views/ProviderStatistics.vue";
+import ServicesStatistics from "@/branchmanagerdomain/analytics/views/ServicesStatistics.vue";
+import RevenueStatistics from "@/branchmanagerdomain/analytics/views/RevenueStatistics.vue";
+import UserStatistics from "@/branchmanagerdomain/analytics/views/UserStatistics.vue";
 
 const activeTab:Ref<string> = ref("providers")
 

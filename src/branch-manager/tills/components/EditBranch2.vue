@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, reactive, defineEmits, onMounted, type Ref } from "vue";
-import { useBranchStore } from "@/branch-manager/tills/stores";
+import { useBranchStore } from "@/branchmanagerdomain/tills/stores";
 import { useNotificationsStore } from "@/stores/notifications";
-// import type { Branch } from "@/branch-manager/branches/types";
+// import type { Branch } from "@/branchmanagerdomain/branches/types";
 
 const branchStore = useBranchStore();
 const notify = useNotificationsStore();

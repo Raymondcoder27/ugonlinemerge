@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, computed, defineProps, type Ref } from "vue";
-import { useTillStore } from "@/branch-manager/tills/stores";
+import { useTillStore } from "@/branchmanagerdomain/tills/stores";
 import { useNotificationsStore } from "@/stores/notifications";
 import type { ApiError } from "@/types";
 import { defineEmits } from "vue";
-import { useAccounts } from "@/branch-manager/accounts/stores";
+import { useAccounts } from "@/branchmanagerdomain/accounts/stores";
 
 const tillStore = useTillStore();
 const store = useAccounts();

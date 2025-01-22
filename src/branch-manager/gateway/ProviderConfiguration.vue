@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import {onMounted, reactive, ref, type Ref, watch} from "vue";
-import {useGatewayStore} from "@/branch-manager/gateway/stores";
-import type {CertConfig, Policy, ProviderConfig, RequestHeader} from "@/branch-manager/gateway/types";
+import {useGatewayStore} from "@/branchmanagerdomain/gateway/stores";
+import type {CertConfig, Policy, ProviderConfig, RequestHeader} from "@/branchmanagerdomain/gateway/types";
 
 const loading: Ref<boolean> = ref(false)
 const notFound: Ref<boolean> = ref(false)

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, type Ref, ref } from "vue";
 import moment from "moment/moment";
-import { useServicesStore } from "@/branch-manager/services/stores";
+import { useServicesStore } from "@/branchmanagerdomain/services/stores";
 import router from "@/router";
 
 const store = useServicesStore();

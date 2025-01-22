@@ -1,13 +1,13 @@
 <script setup lang="ts">
 
-import FormBuilder from "@/branch-manager/composer/components/FormBuilder.vue";
+import FormBuilder from "@/branchmanagerdomain/composer/components/FormBuilder.vue";
 import {onMounted, reactive, type Ref, ref, watch} from "vue";
-import FormViewer from "@/branch-manager/composer/components/FormViewer.vue";
-import {useServicesStore} from "@/branch-manager/services/stores";
-import {useProviderStore} from "@/branch-manager/entities/stores";
+import FormViewer from "@/branchmanagerdomain/composer/components/FormViewer.vue";
+import {useServicesStore} from "@/branchmanagerdomain/services/stores";
+import {useProviderStore} from "@/branchmanagerdomain/entities/stores";
 import {useRouter} from "vue-router";
-import type {FormSection} from "@/branch-manager/composer/types/formtypes";
-import {type Form} from "@/branch-manager/composer/types/formtypes";
+import type {FormSection} from "@/branchmanagerdomain/composer/types/formtypes";
+import {type Form} from "@/branchmanagerdomain/composer/types/formtypes";
 import router from "@/router";
 import {useNotificationsStore} from "@/stores/notifications";
 

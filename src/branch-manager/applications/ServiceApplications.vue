@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import AppModal from "@/components/AppModal.vue";
-import { useApplications } from "@/branch-manager/applications/stores";
+import { useApplications } from "@/branchmanagerdomain/applications/stores";
 import { onMounted, type Ref, ref, watch } from "vue";
 import moment from "moment";
-import { useProviderStore } from "@/branch-manager/entities/stores";
-import { useServicesStore } from "@/branch-manager/services/stores";
+import { useProviderStore } from "@/branchmanagerdomain/entities/stores";
+import { useServicesStore } from "@/branchmanagerdomain/services/stores";
 import type { ApiError } from "@/types";
 import { useNotificationsStore } from "@/stores/notifications";
-import type { ClientApplication } from "@/branch-manager/applications/types";
+import type { ClientApplication } from "@/branchmanagerdomain/applications/types";
 
 const store = useApplications();
 const providerStore = useProviderStore();

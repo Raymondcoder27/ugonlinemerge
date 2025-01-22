@@ -6,9 +6,9 @@ import { useGoRequest } from "@/composables/go-request";
 import { useNotificationsStore } from "@/stores/notifications";
 import { useCommonsStore } from "../../../stores/commons";
 import { AxiosError } from "axios";
-import type { AccountResponseInterface, AccountsData, IResendVerificationPayload } from "@/branch-manager/accounts/types";
-import type { Till } from "@/branch-manager/tills/types";
-import { useTillStore } from "@/branch-manager/tills/stores";
+import type { AccountResponseInterface, AccountsData, IResendVerificationPayload } from "@/branchmanagerdomain/accounts/types";
+import type { Till } from "@/branchmanagerdomain/tills/types";
+import { useTillStore } from "@/branchmanagerdomain/tills/stores";
 
 
 export const useAccounts = defineStore("user-management", () => {
