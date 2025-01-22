@@ -48,6 +48,14 @@ function select(tab: string) {
     <div class="flex pt-5">
       <div
         :class="
+          activeTab == 'floatrequests' ? 'w-2/12 tab-active' : 'w-2/12 tab'
+        "
+        @click="select('floatrequests')"
+      >
+        Float Requests
+      </div>
+      <div
+        :class="
           activeTab == 'floatmanagement' ? 'w-2/12 tab-active' : 'w-2/12 tab'
         "
         @click="select('floatmanagement')"
@@ -69,14 +77,6 @@ function select(tab: string) {
         @click="select('floatledgers')"
       >
         Float Ledger
-      </div>
-      <div
-        :class="
-          activeTab == 'floatrequests' ? 'w-2/12 tab-active' : 'w-2/12 tab'
-        "
-        @click="select('floatrequests')"
-      >
-        Float Requests
       </div>
       <div
         :class="
