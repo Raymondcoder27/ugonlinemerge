@@ -5,6 +5,7 @@ import { ref, type Ref } from "vue";
 
 import FloatLedgers from "@/agentadmindomain/finances/FloatLedgers.vue";
 import FloatManagement from "@/agentadmindomain/finances/FloatAllocation.vue";
+import FloatAllocationTabbed from "@/agentadmindomain/finances/FloatAllocationTabbed.vue";
 import Transactions from "@/agentadmindomain/finances/Transactions.vue";
 import FloatRequests from "@/agentadmindomain/finances/FloatRequests.vue";
 import { useBalance } from "@/agentadmindomain/balance/stores";
@@ -15,7 +16,10 @@ balanceStore.fetchTotalBalance();
 
 const totalBalance = balanceStore.totalBalance;
 
-const activeTab: Ref<string> = ref("floatrequests");
+// const availableFloat = balanceStore.availableFloat;
+const finalFloat = balanceStore.finalFloat;
+
+const activeTab: Ref<string> = ref("floatallocation");
 
 function select(tab: string) {
   activeTab.value = tab;
@@ -38,11 +42,26 @@ function select(tab: string) {
 
         <span
           class="mt-2 mr-3 text-gray-800 font-semibold rounded-md px-1 py-0.5 text-md flex"
-          >
-        <i class="fas fa-wallet px-1 pt-0.5 text-red-700"></i>
-
-          {{ totalBalance.currentBalance.toLocaleString() }}/=</span
         >
+          <!-- <i class="fas fa-wallet px-1 pt-0.5 text-red-700"></i> -->
+
+          <!-- {{ totalBalance.currentBalance.toLocaleString() }}/= -->
+
+          <!-- <span class="px-1">Available Float: {{ availableFloat.toLocaleString() }}/=</span> -->
+          <span class="px-1"
+            >Available Float:
+            <span class="text-gray-500"
+              >{{ totalBalance.currentBalance.toLocaleString() }}/=</span
+            ></span
+          >
+
+          <span class="px-1"
+            >Final Float:
+            <span class="text-gray-500">
+              {{ finalFloat.currentFinalFloat.toLocaleString() }}/=
+            </span></span
+          >
+        </span>
       </div>
     </div>
     <div class="flex pt-5">
@@ -56,15 +75,15 @@ function select(tab: string) {
       </div>
       <div
         :class="
-          activeTab == 'floatmanagement' ? 'w-2/12 tab-active' : 'w-2/12 tab'
+          activeTab == 'floatallocation' ? 'w-2/12 tab-active' : 'w-2/12 tab'
         "
-        @click="select('floatmanagement')"
+        @click="select('floatallocation')"
       >
         Float Allocation
       </div>
       <div
         :class="
-          activeTab == 'transactions' ? 'w-1/12 tab-active' : 'w-1/12 tab'
+          activeTab == 'transactions' ? 'w-2/12 tab-active' : 'w-2/12 tab'
         "
         @click="select('transactions')"
       >
@@ -78,6 +97,15 @@ function select(tab: string) {
       >
         Float Ledger
       </div>
+
+      <!-- <div
+        :class="
+          activeTab == 'branchbalance' ? 'w-2/12 tab-active' : 'w-2/12 tab'
+        "
+        @click="select('branchbalance')"
+      >
+        Branch Balance
+      </div> -->
       <!-- <div
         :class="
           activeTab == 'tillbalance' ? 'w-2/12 tab-active' : 'w-2/12 tab'
@@ -92,7 +120,8 @@ function select(tab: string) {
         <!-- <BackofficeAccounts v-if="activeTab == 'backoffice'" />
         <UserAccounts v-if="activeTab == 'users'" /> -->
         <Transactions v-if="activeTab == 'transactions'" />
-        <FloatManagement v-if="activeTab == 'floatmanagement'" />
+        <!-- <FloatManagement v-if="activeTab == 'floatallocation'" /> -->
+        <FloatAllocationTabbed v-if="activeTab == 'floatallocation'" />
         <FloatLedgers v-if="activeTab == 'floatledgers'" />
         <FloatRequests v-if="activeTab == 'floatrequests'" />
       </div>
