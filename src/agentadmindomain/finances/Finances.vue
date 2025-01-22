@@ -78,14 +78,6 @@ function select(tab: string) {
       >
         Float Ledger
       </div>
-      <div
-        :class="
-          activeTab == 'branchbalance' ? 'w-2/12 tab-active' : 'w-2/12 tab'
-        "
-        @click="select('branchbalance')"
-      >
-        Branch Balance
-      </div>
       <!-- <div
         :class="
           activeTab == 'tillbalance' ? 'w-2/12 tab-active' : 'w-2/12 tab'
