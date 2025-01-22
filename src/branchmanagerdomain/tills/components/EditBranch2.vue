@@ -203,4 +203,4 @@ button {
 .cell-full {
   @apply w-full px-1 my-2;
 }
-</style>@/branch-manager/tills/stores@/branchmanager/tills/stores
+</style>@/branchmanagerdomain/tills/stores@/branchmanager/tills/stores
