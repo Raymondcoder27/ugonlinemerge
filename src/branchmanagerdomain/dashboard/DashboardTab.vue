@@ -162,4 +162,4 @@ onMounted(async () => {
   @apply bg-gray-50 text-gray-600 rounded-t-xl;
 }
 </style>
-<!-- @/branchmanager/balance/stores@/branchmanager/services/stores@/branchmanager/tills/stores@/branchmanager/accounts/stores@/branchmanager/finances/stores -->
+<!-- @/branchmanager/balance/stores@/branchmanager/services/stores@/branchmanager/tills/stores@/branchmanager/accounts/stores@/branchmanagerdomain/finances/stores -->

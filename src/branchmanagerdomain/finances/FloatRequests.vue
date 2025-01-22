@@ -653,4 +653,4 @@ onMounted(() => {
 @import "@/assets/styles/widgets.css";
 </style>
 <!-- @/agentdomain/ledger/types -->
- <!-- @/branchmanager/finances/stores@/branchmanager/balance/stores@/branchmanager/finances/types -->
+ <!-- @/branchmanagerdomain/finances/stores@/branchmanager/balance/stores@/branchmanagerdomain/finances/types -->
