@@ -1,4 +1,4 @@
-import type { Account, AccountResponse, IGoFilter, IErrorResponse, ManagerAccount, BackOfficeAccount, AllocateTillOperator, AssignTillOperator } from "@/types";
+import type { Account, AccountResponse, IGoFilter, IErrorResponse, TillOperatorAccount, BackOfficeAccount, AllocateTillOperator, AssignTillOperator } from "@/types";
 import { defineStore } from "pinia";
 import type { Ref } from "vue";
 import { ref } from "vue";
@@ -18,6 +18,7 @@ export const useAccounts = defineStore("user-management", () => {
   const commons = useCommonsStore();
 
   const tillStore = useTillStore();
+
 
   // Dummy Data for testing
   const dummyUserAccounts: Account[] = [
@@ -95,56 +96,57 @@ export const useAccounts = defineStore("user-management", () => {
   const response: Ref<AccountResponse | undefined> = ref();
   const userAccounts: Ref<Account[]> = ref([dummyUserAccounts]);
   const backofficeAccounts: Ref<Account[]> = ref([dummyBackofficeAccounts]);
-  const tillOperatorAccounts: Ref<TillOperatorAccount[]> = ref([dummyTillOperatorAccounts]);
+  // const tillOperatorAccounts: Ref<TillOperatorAccount[]> = ref([dummyTillOperatorAccounts]);
+  const tillOperators: Ref<TillOperatorAccount[]> = ref([dummyTillOperatorAccounts]);
   const tillOperatorAllocations: Ref<AllocateTillOperator[]> = ref([]);
 
 
 
-  // allocate manager to a Till using managerId
+  // allocate tillOperator to a Till using operatorId
   const allocateTillOperator = (payload: AllocateTillOperator) => {
     tillOperatorAllocations.value.push({
       id: tillOperatorAllocations.value.length + 1,
       dateAssigned: new Date().toISOString(),
       till: payload.tillId,
-      manager: payload.managerId,
+      manager: payload.operatorId,
       status: "Assigned"
     });
 
     // Update the manager's till
-    const manager = tillOperatorAccounts.value.find((manager) => manager.id === payload.managerId);
-    if (manager) {
-      manager.till = payload.tillId;
-      localStorageManagerAccount.value = manager; // Update the local storage variable
+    const tillOperator = tillOperators.value.find((operator) => operator.id === payload.operatorId);
+    if (operator) {
+      operator.till = payload.tillId;
+      // localStorageTillOperator.value = manager; // Update the local storage variable
       // }
     }
 
     // Update the till's manager
     const till = tills?.value.find((till) => till.id === payload.tillId);
     if (till) {
-      till.manager = payload.managerId;
+      till.operator = payload.operatorId;
     }
 
-    saveManagerToLocalStorage();
+    // saveManagerToLocalStorage();
   }
 
-  // const localStorageManagerAccount = ref<ManagerAccount>();
-  const localStorageManagerAccount = ref<TillOperatorAccount[]>([])
+  // const localStorageTillOperatorAccount = ref<TillOperator>();
+  // const localStorageTillOperatorAccount = ref<TillOperatorAccount[]>([])
 
-  // Save manager to local storage
+  // Save tillOperator to local storage
   // const saveManagerToLocalStorage = () => {
-  //   // localStorage.setItem('branchManagerFloatBalance', JSON.stringify(localStorageManagerAccount.value))
-  //   localStorage.setItem('tillOperatorAccount', JSON.stringify(localStorageManagerAccount.value))
-  //   console.log("Manager saved to local storage:", localStorageManagerAccount.value);
+  //   // localStorage.setItem('branchManagerFloatBalance', JSON.stringify(localStorageTillOperator.value))
+  //   localStorage.setItem('tillOperatorAccount', JSON.stringify(localStorageTillOperator.value))
+  //   console.log("Manager saved to local storage:", localStorageTillOperator.value);
 
   // }
-  const saveManagerToLocalStorage = () => {
-    if (localStorageManagerAccount.value) {
-      localStorage.setItem('tillOperatorAccount', JSON.stringify(localStorageManagerAccount.value));
-      console.log("Manager saved to local storage:", localStorageManagerAccount.value);
-    } else {
-      console.warn("No manager account to save to local storage.");
-    }
-  };
+  // const saveManagerToLocalStorage = () => {
+  //   if (localStorageTillOperator.value) {
+  //     localStorage.setItem('tillOperatorAccount', JSON.stringify(localStorageTillOperator.value));
+  //     console.log("Manager saved to local storage:", localStorageTillOperator.value);
+  //   } else {
+  //     console.warn("No tillOperator account to save to local storage.");
+  //   }
+  // };
 
 
   // Simulating account creation
@@ -171,12 +173,12 @@ export const useAccounts = defineStore("user-management", () => {
   //   })
   // }
 
-  // add manager account, push to the manager account array
-  const addTillOperatorAccount = (newManager: ManagerAccount) => {
-    tillOperatorAccounts.value.push(
+  // add tillOperator account, push to the tillOperator account array
+  const addTillOperator = (newManager: TillOperator) => {
+    tillOperators.value.push(
       {
         // id:  floatAllocations.value.length + 1,
-        id: managerAccounts.value.length + 1,
+        id: tillOperators.value.length + 1,
         firstName: newOperator.firstName,
         lastName: newOperator.lastName,
         middleNames: newOperator.middleNames,
@@ -216,8 +218,8 @@ export const useAccounts = defineStore("user-management", () => {
     ); // Directly add the backoffice to the array
   }
 
-  // const addManagerAccount = (newManager: ManagerAccount) => {
-  //   managerAccounts.value.push(newManager); // Directly add the manager to the array
+  // const addTillOperator = (newManager: TillOperator) => {
+  //   tillOperatorAccounts.value.push(newManager); // Directly add the tillOperator to the array
   // }
 
   // Fetch dummy user accounts
@@ -232,10 +234,10 @@ export const useAccounts = defineStore("user-management", () => {
     backofficeAccounts.value = dummyBackofficeAccounts;
   }
 
-  // Fetch dummy manager accounts
-  const fetchTillOperatorAccounts = async (filter: IGoFilter) => {
+  // Fetch dummy tillOperator accounts
+  const fetchTillOperators = async (filter: IGoFilter) => {
     // Here you would normally process the filter if you had real data
-    tillOperatorAccounts.value = dummyTillOperatorAccounts;
+    tillOperators.value = dummyTillOperatorAccounts;
   }
 
   // Simulating resend account verification
@@ -255,7 +257,7 @@ export const useAccounts = defineStore("user-management", () => {
   // const assignManager = (payload: AssignManager) => {
   //   const tillToUpdate = tills.value?.find(till => till.id === payload.tillId);
   //   if (branchToUpdate) {
-  //     tillToUpdate.manager = payload.managerId;
+  //     tillToUpdate.operator = payload.operatorId;
   //   } else {
   //     console.warn(`Till with ID ${payload.tillId} not found.`);
   //   }
@@ -263,7 +265,7 @@ export const useAccounts = defineStore("user-management", () => {
 
   // function submit() {
   //   let payload = {
-  //     managerId: form.managerId,
+  //     operatorId: form.operatorId,
   //     // tillId: form.tillId,
   //   };
   //   loading.value = true;
@@ -273,12 +275,12 @@ export const useAccounts = defineStore("user-management", () => {
   //   loading.value = false;
   // }
 
-  //use the manager id to assign a manager to a till
+  //use the tillOperator id to assign a tillOperator to a till
   // const assignManager = (payload: AssignManager) => {
   // const assignManager = (userId: string) => {
   //   const user = userAccounts.value?.find(userId => user.id === userId.userId);
   //   if (user) {
-  //     managerAccounts.value.push({
+  //     tillOperatorAccounts.value.push({
   //       firstName: user.firstName,
   //       lastName: user.lastName,
   //       email: user.email,
@@ -296,14 +298,14 @@ export const useAccounts = defineStore("user-management", () => {
   //   }
   // };
 
-  // assign manager to a till
+  // assign tillOperator to a till
   // const assignManager = (userId: string) => {
   //   console.log('User ID:', userId); // Debugging log
 
   //   const user = backofficeAccounts.value?.find((account) => account.id === userId);  // Compare `userId` with `account.id`
 
   //   if (user) {
-  //     managerAccounts.value.push({
+  //     tillOperatorAccounts.value.push({
   //       firstName: user.firstName,
   //       lastName: user.lastName,
   //       email: user.email,
@@ -331,7 +333,7 @@ export const useAccounts = defineStore("user-management", () => {
 
     // if (user && till) {
     if (user && till) {
-      tillOperatorAccounts.value.push({
+      tillOperators.value.push({
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
@@ -344,21 +346,21 @@ export const useAccounts = defineStore("user-management", () => {
         activatedAt: new Date().toISOString(),
         till: till.name, // Include tillId
       });
-      // managerAccounts.value.push(assignedManager);
-      localStorageManagerAccount.value.push({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        phone: user.phone,
-        role: user.role,
-        status: user.status,
-        createdAt: new Date().toISOString(),
-        emailVerified: true,
-        phoneVerified: true,
-        activatedAt: new Date().toISOString(),
-        till: till.name, // Include tillId
-      }) // Update the local storage reference
-      saveManagerToLocalStorage(); // Save to local storage
+      // tillOperatorAccounts.value.push(assignedManager);
+      // localStorageTillOperator.value.push({
+      //   firstName: user.firstName,
+      //   lastName: user.lastName,
+      //   email: user.email,
+      //   phone: user.phone,
+      //   role: user.role,
+      //   status: user.status,
+      //   createdAt: new Date().toISOString(),
+      //   emailVerified: true,
+      //   phoneVerified: true,
+      //   activatedAt: new Date().toISOString(),
+      //   till: till.name, // Include tillId
+      // }) // Update the local storage reference
+      // saveManagerToLocalStorage(); // Save to local storage
       console.log(`Manager assigned to Till ${till.name}`);
       console.log(`Manager assigned to Till ${tillId}`);
     } else {
@@ -372,9 +374,9 @@ export const useAccounts = defineStore("user-management", () => {
 
 
 
-  // push new assigned manager managerAccounts array
+  // push new assigned tillOperator tillOperators array
   // const assignManager = (payload: AssignManager) => {
-  //   managerAccounts.value.push({
+  //   tillOperatorAccounts.value.push({
   //     firstName: payload.firstName,
   //     lastName: payload.lastName,
   //     email: payload.email,
@@ -394,20 +396,16 @@ export const useAccounts = defineStore("user-management", () => {
     response,
     userAccounts,
     backofficeAccounts,
-    // managerAccounts,
-    // managerAllocations,
-    tillOperatorAccounts,
+    tillOperators,
     tillOperatorAllocations,
-    allocateTillOperator,
     assignOperator,
     createAccount,
     fetchBackofficeAccounts,
     fetchUserAccounts,
-    // fetchManagerAccounts,
-    fetchTillOperatorAccounts,
-    // addManagerAccount,
+    fetchTillOperators,
+    addTillOperator,
     addBackOfficeAccount,
-    // allocateManager,
+    allocateTillOperator,
     resendAccountVerification
   };
 });
