@@ -172,4 +172,5 @@ onMounted(async () => {
 .count {
   @apply py-2 text-center border border-gray-100 rounded bg-white mx-1 shadow;
 }
-</style>@/branchmanager/tills/stores@/branchmanagerdomain/finances/stores@/branchmanager/services/stores@/branchmanager/accounts/stores@/branchmanager/balance/stores
+</style>
+<!-- @/branchmanager/tills/stores@/branchmanagerdomain/finances/stores@/branchmanager/services/stores@/branchmanager/accounts/stores@/branchmanager/balance/stores -->
