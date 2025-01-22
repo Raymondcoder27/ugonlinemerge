@@ -86,7 +86,7 @@ const mergedRoutes: RouteRecordRaw[] = [
     ],
   },
   {
-    path: "/branchmanagerdomain",
+    path: "/branch-manager",
     name: "branch-manager-home",
     component: BranchManagerLayout,
     meta: { requiresAuth: true },
