@@ -9,7 +9,7 @@ import type {
   AuthResponseInterface,
   SignInResponseInterface,
   SignUpResponseInterface, UserProfileInterface
-} from "@/domain/auth/types"
+} from "@/agentadmindomain/auth/types"
 import { ref, type Ref } from "vue"
 
 export const useAccountStore = defineStore("accounts", () => {

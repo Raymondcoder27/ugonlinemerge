@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import BarChart from "@/domain/analytics/components/BarChart.vue";
-import LineChart from "@/domain/analytics/components/LineChart.vue";
-import PieChart from "@/domain/analytics/components/PieChart.vue";
+import BarChart from "@/agentadmindomain/analytics/components/BarChart.vue";
+import LineChart from "@/agentadmindomain/analytics/components/LineChart.vue";
+import PieChart from "@/agentadmindomain/analytics/components/PieChart.vue";
 
 import type { Ref } from "vue";
-import type { GraphData, Statistic } from "@/domain/analytics/types/chart";
+import type { GraphData, Statistic } from "@/agentadmindomain/analytics/types/chart";
 import { ref } from "vue";
 
 const data: Ref<Array<GraphData>> = ref([

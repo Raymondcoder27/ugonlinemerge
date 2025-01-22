@@ -1,7 +1,7 @@
 
 import {ref, type Ref} from "vue";
 import {defineStore} from "pinia";
-import type {ProviderResponseInterface, ServiceProvider} from "@/domain/entities/types";
+import type {ProviderResponseInterface, ServiceProvider} from "@/agentadmindomain/entities/types";
 import api from "@/config/api";
 
 export const useProviderStore = defineStore("providers", () => {

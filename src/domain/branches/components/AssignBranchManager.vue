@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, computed, defineProps, type Ref } from "vue";
-import { useBranchStore } from "@/domain/branches/stores";
+import { useBranchStore } from "@/agentadmindomain/branches/stores";
 import { useNotificationsStore } from "@/stores/notifications";
 import type { ApiError } from "@/types";
 import { defineEmits } from "vue";
-import { useAccounts } from "@/domain/accounts/stores";
+import { useAccounts } from "@/agentadmindomain/accounts/stores";
 
 const branchStore = useBranchStore();
 const store = useAccounts();

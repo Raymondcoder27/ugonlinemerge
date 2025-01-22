@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, reactive, type Ref, ref, defineEmits } from "vue";
-import { useProviderStore } from "@/domain/providers/stores";
-import { useAccounts } from "@/domain/accounts/stores";
-import type { CreateServiceProvider } from "@/domain/providers/types";
+import { useProviderStore } from "@/agentadmindomain/providers/stores";
+import { useAccounts } from "@/agentadmindomain/accounts/stores";
+import type { CreateServiceProvider } from "@/agentadmindomain/providers/types";
 import type { AssignManager } from "@/types";
 import { useNotificationsStore } from "@/stores/notifications";
 import type { ApiError } from "@/types";

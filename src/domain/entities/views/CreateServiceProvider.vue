@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import {reactive, type Ref, ref} from "vue";
-import {useProviderStore} from "@/domain/entities/stores";
-import type {CreateServiceProvider} from "@/domain/entities/types";
+import {useProviderStore} from "@/agentadmindomain/entities/stores";
+import type {CreateServiceProvider} from "@/agentadmindomain/entities/types";
 import {useNotificationsStore} from "@/stores/notifications";
 import type {ApiError} from "@/types";
 

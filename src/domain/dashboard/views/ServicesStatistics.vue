@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import ProviderStatisticsBarChart from "@/domain/dashboard/views/ProviderStatisticsBarChart.vue";
-// import LineChart from "@/domain/dashboard/components/LineChart.vue";
-// import PieChart from "@/domain/dashboard/components/PieChart.vue";
+import ProviderStatisticsBarChart from "@/agentadmindomain/dashboard/views/ProviderStatisticsBarChart.vue";
+// import LineChart from "@/agentadmindomain/dashboard/components/LineChart.vue";
+// import PieChart from "@/agentadmindomain/dashboard/components/PieChart.vue";
 
-import GatewayStatistics from "@/domain/dashboard/views/ServiceStatusPieChart.vue";
+import GatewayStatistics from "@/agentadmindomain/dashboard/views/ServiceStatusPieChart.vue";
 import { type Ref, ref } from "vue";
-// import ProviderStatistics from "@/domain/dashboard/views/ProviderStatistics.vue";
-// import ServicesStatistics from "@/domain/dashboard/views/ServicesStatistics.vue";
-import ApplicationsLineGraph from "@/domain/dashboard/views/ApplicationsLineGraph.vue";
-// import RevenueStatistics from "@/domain/dashboard/views/RevenueStatistics.vue";
-// import UserStatistics from "@/domain/dashboard/views/UserStatistics.vue";
+// import ProviderStatistics from "@/agentadmindomain/dashboard/views/ProviderStatistics.vue";
+// import ServicesStatistics from "@/agentadmindomain/dashboard/views/ServicesStatistics.vue";
+import ApplicationsLineGraph from "@/agentadmindomain/dashboard/views/ApplicationsLineGraph.vue";
+// import RevenueStatistics from "@/agentadmindomain/dashboard/views/RevenueStatistics.vue";
+// import UserStatistics from "@/agentadmindomain/dashboard/views/UserStatistics.vue";
 
 // import type { Ref } from "vue";
-import type { GraphData, Statistic } from "@/domain/dashboard/types/chart";
-import ServiceStatusPieChart from "@/domain/dashboard/views/ServiceStatusPieChart.vue";
+import type { GraphData, Statistic } from "@/agentadmindomain/dashboard/types/chart";
+import ServiceStatusPieChart from "@/agentadmindomain/dashboard/views/ServiceStatusPieChart.vue";
 // import { ref } from "vue";
 
 const data: Ref<Array<GraphData>> = ref([

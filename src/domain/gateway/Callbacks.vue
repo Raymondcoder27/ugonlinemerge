@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
 import {onMounted, ref, type Ref} from "vue";
-import {useGatewayStore} from "@/domain/gateway/stores";
+import {useGatewayStore} from "@/agentadmindomain/gateway/stores";
 import moment from "moment";
 import AppModal from "@/components/AppModal.vue";
-import CallbackPreview from "@/domain/gateway/components/CallbackPreview.vue";
+import CallbackPreview from "@/agentadmindomain/gateway/components/CallbackPreview.vue";
 
 const loading: Ref<boolean> = ref(false)
 const page: Ref<number> = ref(1);

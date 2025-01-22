@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useServicesStore } from "@/domain/services/stores";
-import ServiceCards from "@/domain/services/components/ServiceCards.vue";
-import SubscribedServices from "@/domain/services/components/SubscribedServices.vue";
+import { useServicesStore } from "@/agentadmindomain/services/stores";
+import ServiceCards from "@/agentadmindomain/services/components/ServiceCards.vue";
+import SubscribedServices from "@/agentadmindomain/services/components/SubscribedServices.vue";
 import { onMounted, ref, type Ref, watch, computed } from "vue";
 
 const page: Ref<number> = ref(1);

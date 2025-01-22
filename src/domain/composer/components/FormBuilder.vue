@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type {Form, FormElement, FormOption, FormSection} from "@/domain/composer/types/formtypes";
+import type {Form, FormElement, FormOption, FormSection} from "@/agentadmindomain/composer/types/formtypes";
 import {onMounted, ref, type Ref, watch} from "vue";
 import AppModal from "@/components/AppModal.vue";
-import PlatformConstants from "@/domain/composer/components/PlatformConstants.vue";
+import PlatformConstants from "@/agentadmindomain/composer/components/PlatformConstants.vue";
 
 const emit = defineEmits(['updated', 'save'])
 

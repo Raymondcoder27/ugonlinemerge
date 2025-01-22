@@ -1,15 +1,15 @@
 <script setup lang="ts">
 
 import {onMounted, type Ref, ref} from "vue";
-import {useProviderStore} from "@/domain/entities/stores";
+import {useProviderStore} from "@/agentadmindomain/entities/stores";
 import moment from "moment/moment";
-import Callbacks from "@/domain/gateway/Callbacks.vue";
-import DeadLetters from "@/domain/gateway/DeadLetters.vue";
-import Features from "@/domain/gateway/Features.vue";
-import OutgoingRequests from "@/domain/gateway/OutgoingRequests.vue";
+import Callbacks from "@/agentadmindomain/gateway/Callbacks.vue";
+import DeadLetters from "@/agentadmindomain/gateway/DeadLetters.vue";
+import Features from "@/agentadmindomain/gateway/Features.vue";
+import OutgoingRequests from "@/agentadmindomain/gateway/OutgoingRequests.vue";
 import Footer from "@/components/Footer.vue";
 import {useRouter} from "vue-router";
-import ProviderConfiguration from "@/domain/gateway/ProviderConfiguration.vue";
+import ProviderConfiguration from "@/agentadmindomain/gateway/ProviderConfiguration.vue";
 import OptionalHeader from "@/components/OptionalHeader.vue";
 
 const store = useProviderStore()

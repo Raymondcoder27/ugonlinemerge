@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import BarChart from "@/domain/analytics/components/BarChart.vue";
-import LineChart from "@/domain/analytics/components/LineChart.vue";
-import PieChart from "@/domain/analytics/components/PieChart.vue";
-import { useBranchStore } from "@/domain/branches/stores";
+import BarChart from "@/agentadmindomain/analytics/components/BarChart.vue";
+import LineChart from "@/agentadmindomain/analytics/components/LineChart.vue";
+import PieChart from "@/agentadmindomain/analytics/components/PieChart.vue";
+import { useBranchStore } from "@/agentadmindomain/branches/stores";
 const branchStore = useBranchStore();
 
 const totalBranches = branchStore.branches?.length || 0;
@@ -10,7 +10,7 @@ const totalBranches = branchStore.branches?.length || 0;
 branchStore.fetchBranches();
 
 import type { Ref } from "vue";
-import type { GraphData, Statistic } from "@/domain/analytics/types/chart";
+import type { GraphData, Statistic } from "@/agentadmindomain/analytics/types/chart";
 import { ref } from "vue";
 
 const providerOnboarding: Ref<Array<GraphData>> = ref([

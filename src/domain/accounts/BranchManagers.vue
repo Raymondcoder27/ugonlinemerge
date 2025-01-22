@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import AppModal from "@/components/AppModal.vue";
-import { useAccounts } from "@/domain/accounts/stores";
+import { useAccounts } from "@/agentadmindomain/accounts/stores";
 import { onMounted, type Ref, ref, watch, reactive, computed } from "vue";
-import CreateAccount from "@/domain/accounts/components/CreateAccount.vue";
+import CreateAccount from "@/agentadmindomain/accounts/components/CreateAccount.vue";
 import moment from "moment";
 import type { IGoFilter } from "@/types";
 import { useDebounceFn } from "@vueuse/core";
@@ -10,10 +10,10 @@ import type {
   IResendVerificationPayload,
   TAccountVerificationType,
 } from "./types";
-// import AddManager from "@/domain/accounts/components/AddManager.vue";
-import EditManager from "@/domain/accounts/components/EditManager.vue";
+// import AddManager from "@/agentadmindomain/accounts/components/AddManager.vue";
+import EditManager from "@/agentadmindomain/accounts/components/EditManager.vue";
 
-import { useBranchStore } from "@/domain/branches/stores"; // Updated import
+import { useBranchStore } from "@/agentadmindomain/branches/stores"; // Updated import
 
 const pageInput = ref(1);
 const changePageSize = () => {

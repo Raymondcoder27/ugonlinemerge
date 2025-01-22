@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { onMounted, ref, type Ref } from "vue";
-import FloatLedgers from "@/domain/finances/FloatLedgers.vue";
-import FloatManagement from "@/domain/finances/FloatAllocation.vue";
-import Transactions from "@/domain/finances/Transactions.vue";
-import FloatRequests from "@/domain/finances/FloatRequests.vue";
-import { useBalance } from "@/domain/balance/stores";
+import FloatLedgers from "@/agentadmindomain/finances/FloatLedgers.vue";
+import FloatManagement from "@/agentadmindomain/finances/FloatAllocation.vue";
+import Transactions from "@/agentadmindomain/finances/Transactions.vue";
+import FloatRequests from "@/agentadmindomain/finances/FloatRequests.vue";
+import { useBalance } from "@/agentadmindomain/balance/stores";
 
-import HomeTab from "@/domain/dashboard/components/HomeTab.vue";
-import UserStatistics from "@/domain/dashboard/views/UserStatistics.vue";
-import BranchStatistics from "@/domain/dashboard/views/BranchStatistics.vue";
-import ServicesStatistics from "@/domain/dashboard/views/ServicesStatistics.vue";
-import RevenueStatistics from "@/domain/dashboard/views/RevenueStatistics.vue";
-import { useServicesStore } from "@/domain/services/stores";
-import { useBranchStore } from "@/domain/branches/stores";
-import { useAccounts } from "@/domain/accounts/stores";
-import { useBilling } from "@/domain/finances/stores";
-// import { useBalance } from "@/domain/balance/stores";
+import HomeTab from "@/agentadmindomain/dashboard/components/HomeTab.vue";
+import UserStatistics from "@/agentadmindomain/dashboard/views/UserStatistics.vue";
+import BranchStatistics from "@/agentadmindomain/dashboard/views/BranchStatistics.vue";
+import ServicesStatistics from "@/agentadmindomain/dashboard/views/ServicesStatistics.vue";
+import RevenueStatistics from "@/agentadmindomain/dashboard/views/RevenueStatistics.vue";
+import { useServicesStore } from "@/agentadmindomain/services/stores";
+import { useBranchStore } from "@/agentadmindomain/branches/stores";
+import { useAccounts } from "@/agentadmindomain/accounts/stores";
+import { useBilling } from "@/agentadmindomain/finances/stores";
+// import { useBalance } from "@/agentadmindomain/balance/stores";
 
 const branchStore = useBranchStore();
 const billingStore = useBilling();

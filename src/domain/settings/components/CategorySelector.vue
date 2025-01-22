@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {useSettingsStore} from "@/domain/settings/stores";
+import {useSettingsStore} from "@/agentadmindomain/settings/stores";
 import {ref, type Ref} from "vue";
 import AppModal from "@/components/AppModal.vue";
 import {onMounted} from "vue";
-import CreateServiceCategory from "@/domain/settings/components/CreateServiceCategory.vue";
+import CreateServiceCategory from "@/agentadmindomain/settings/components/CreateServiceCategory.vue";
 import type {ApiError} from "@/types";
 import {useNotificationsStore} from "@/stores/notifications";
 

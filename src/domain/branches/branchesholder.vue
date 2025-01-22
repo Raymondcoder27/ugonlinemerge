@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import AppModal from "@/components/AppModal.vue";
 import { onMounted, ref, type Ref, watch, computed } from "vue";
-import CreateBranch from "@/domain/branches/components/CreateBranch.vue";
-import { useBranchStore } from "@/domain/branches/stores"; // Updated import
-import type { Branch } from "@/domain/branches/types"; // Assuming you have a Branch type
+import CreateBranch from "@/agentadmindomain/branches/components/CreateBranch.vue";
+import { useBranchStore } from "@/agentadmindomain/branches/stores"; // Updated import
+import type { Branch } from "@/agentadmindomain/branches/types"; // Assuming you have a Branch type
 import moment from "moment/moment";
 import router from "@/router";
-import { useProviderStore } from "@/domain/entities/stores";
-import AssignBranchManager from "@/domain/branches/components/AssignBranchManager.vue";
-// import CategorySelector from "@/domain/settings/components/CategorySelector.vue";
+import { useProviderStore } from "@/agentadmindomain/entities/stores";
+import AssignBranchManager from "@/agentadmindomain/branches/components/AssignBranchManager.vue";
+// import CategorySelector from "@/agentadmindomain/settings/components/CategorySelector.vue";
 import { useNotificationsStore } from "@/stores/notifications";
 import type { ApiError } from "@/types";
 import { useAccountStore } from "../auth/stores";
 // import TableLoader from "@/components/TableLoader.vue";
 
-import { useAccounts } from "@/domain/accounts/stores";
+import { useAccounts } from "@/agentadmindomain/accounts/stores";
 const accountStore = useAccounts();
 const branchStore = useBranchStore(); // Updated store
 const modalOpen: Ref<boolean> = ref(false);

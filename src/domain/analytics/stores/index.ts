@@ -1,8 +1,8 @@
 import {defineStore} from "pinia";
 import {ref, type Ref} from "vue";
-import {type GatewayResponseInterface} from "@/domain/gateway/types";
+import {type GatewayResponseInterface} from "@/agentadmindomain/gateway/types";
 import api from "@/config/api";
-import type {ProviderRegistrationStatistic, Statistic} from "@/domain/analytics/types/chart";
+import type {ProviderRegistrationStatistic, Statistic} from "@/agentadmindomain/analytics/types/chart";
 
 export const useGatewayReportsStore = defineStore("gateway-reports", () => {
     const providersByRegistration: Ref<ProviderRegistrationStatistic[] | undefined> = ref()

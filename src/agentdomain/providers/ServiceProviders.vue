@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import AppModal from "@/components/AppModal.vue";
-import { useProviderStore } from "@/domain/providers/stores";
+import { useProviderStore } from "@/agentadmindomain/providers/stores";
 import {onMounted, type Ref, ref, watch} from "vue";
-import CreateServiceProvider from "@/domain/providers/views/CreateServiceProvider.vue";
+import CreateServiceProvider from "@/agentadmindomain/providers/views/CreateServiceProvider.vue";
 import moment from "moment";
 import coa from "@/assets/images/coa_gs.png"
-import EditServiceProvider from "@/domain/providers/views/EditServiceProvider.vue";
-import type {ServiceProvider} from "@/domain/providers/types";
+import EditServiceProvider from "@/agentadmindomain/providers/views/EditServiceProvider.vue";
+import type {ServiceProvider} from "@/agentadmindomain/providers/types";
 import router from "@/router";
 import {useCommonsStore} from "@/stores/commons";
 import type {ApiError} from "@/types";

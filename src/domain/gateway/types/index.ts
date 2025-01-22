@@ -1,4 +1,4 @@
-import type {GoValueInt, GoValueString, GoValueTime} from "@/domain/services/types";
+import type {GoValueInt, GoValueString, GoValueTime} from "@/agentadmindomain/services/types";
 
 export interface GatewayResponseInterface {
     success: boolean

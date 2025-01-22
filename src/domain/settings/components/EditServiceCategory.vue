@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import {onMounted, reactive, type Ref, ref, watch} from "vue";
-import type {Category, CreateServiceCategory} from "@/domain/settings/types";
-import {useSettingsStore} from "@/domain/settings/stores";
+import type {Category, CreateServiceCategory} from "@/agentadmindomain/settings/types";
+import {useSettingsStore} from "@/agentadmindomain/settings/stores";
 import type {ApiError} from "@/types";
 import {useNotificationsStore} from "@/stores/notifications";
 

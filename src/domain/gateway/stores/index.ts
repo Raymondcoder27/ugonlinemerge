@@ -8,7 +8,7 @@ import type {
   Feature,
   GatewayResponseInterface,
   ProviderConfig, Webhook
-} from "@/domain/gateway/types";
+} from "@/agentadmindomain/gateway/types";
 
 export const useGatewayStore = defineStore("gateway", () => {
   const features: Ref<Feature[] | undefined> = ref()

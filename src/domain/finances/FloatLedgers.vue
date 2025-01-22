@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppModal from "@/components/AppModal.vue";
 import { onMounted, ref, reactive, watch, computed, type Ref } from "vue";
-import { useBilling } from "@/domain/finances/stores"; // Import the appropriate store
+import { useBilling } from "@/agentadmindomain/finances/stores"; // Import the appropriate store
 import { useDebounceFn } from "@vueuse/core";
 import type {
   Transaction,
@@ -10,7 +10,7 @@ import type {
   FloatManagement,
 } from "./types"; // Import billing types
 import moment from "moment/moment";
-import { useBalance } from "@/domain/balance/stores"; // Import the balance store
+import { useBalance } from "@/agentadmindomain/balance/stores"; // Import the balance store
 
 const balanceStore = useBalance(); // Initialize the balance store
 

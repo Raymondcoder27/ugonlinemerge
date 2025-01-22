@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {reactive} from "vue";
-// import {useProviderStore} from "@/domain/providers/stores";
+// import {useProviderStore} from "@/agentadmindomain/providers/stores";
 //
 // const stores = useProviderStore()
 

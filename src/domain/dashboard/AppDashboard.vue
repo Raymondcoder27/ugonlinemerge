@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { useBranchStore } from "@/domain/branches/stores";
-import { useBilling } from "@/domain/finances/stores";
-import { useServicesStore } from "@/domain/services/stores";
-import { useAccounts } from "@/domain/accounts/stores";
-import { useBalance } from "@/domain/balance/stores";
+import { useBranchStore } from "@/agentadmindomain/branches/stores";
+import { useBilling } from "@/agentadmindomain/finances/stores";
+import { useServicesStore } from "@/agentadmindomain/services/stores";
+import { useAccounts } from "@/agentadmindomain/accounts/stores";
+import { useBalance } from "@/agentadmindomain/balance/stores";
 
 // const totalServiceSubscriptions = ref(0);
 

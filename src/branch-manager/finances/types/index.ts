@@ -55,6 +55,7 @@ export interface FloatRequest {
   amount: number;
   status: string;
   requesterName: string;
+  till: string;
   approvedBy: string | null;
   createdAt: string; 
 }

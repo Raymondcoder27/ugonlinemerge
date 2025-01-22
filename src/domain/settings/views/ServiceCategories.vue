@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useSettingsStore } from "@/domain/settings/stores";
+import { useSettingsStore } from "@/agentadmindomain/settings/stores";
 import { reactive, ref, type Ref } from "vue";
 import AppModal from "@/components/AppModal.vue";
 import { onMounted } from "vue";
-import CreateServiceCategory from "@/domain/settings/components/CreateServiceCategory.vue";
-import EditServiceCategory from "@/domain/settings/components/EditServiceCategory.vue";
-import type { Category } from "@/domain/settings/types";
+import CreateServiceCategory from "@/agentadmindomain/settings/components/CreateServiceCategory.vue";
+import EditServiceCategory from "@/agentadmindomain/settings/components/EditServiceCategory.vue";
+import type { Category } from "@/agentadmindomain/settings/types";
 import { useNotificationsStore } from "@/stores/notifications";
 import type { ApiError } from "@/types";
 import TableLoader from "@/components/TableLoader.vue";

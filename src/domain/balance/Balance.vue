@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref, type Ref } from "vue";
-// import BackofficeAccounts from "@/domain/accounts/BackofficeAccounts.vue";
-// import UserAccounts from "@/domain/accounts/UserAccounts.vue";
+// import BackofficeAccounts from "@/agentadmindomain/accounts/BackofficeAccounts.vue";
+// import UserAccounts from "@/agentadmindomain/accounts/UserAccounts.vue";
 
-import FloatLedgers from "@/domain/finances/FloatLedgers.vue";
-import FloatManagement from "@/domain/finances/FloatAllocation.vue";
-import Transactions from "@/domain/finances/Transactions.vue";
-import FloatRequests from "@/domain/finances/FloatRequests.vue";
+import FloatLedgers from "@/agentadmindomain/finances/FloatLedgers.vue";
+import FloatManagement from "@/agentadmindomain/finances/FloatAllocation.vue";
+import Transactions from "@/agentadmindomain/finances/Transactions.vue";
+import FloatRequests from "@/agentadmindomain/finances/FloatRequests.vue";
 
 const activeTab: Ref<string> = ref("floatmanagement");
 

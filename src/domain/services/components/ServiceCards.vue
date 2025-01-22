@@ -1,9 +1,9 @@
   <script setup lang="ts">
 import type { Ref } from "vue";
 import { ref, onMounted, computed } from "vue";
-import { useServicesStore } from "@/domain/services/stores";
-import type { Service } from "@/domain/services/types";
-// import { useProviderStore } from "@/domain/entities/stores";
+import { useServicesStore } from "@/agentadmindomain/services/stores";
+import type { Service } from "@/agentadmindomain/services/types";
+// import { useProviderStore } from "@/agentadmindomain/entities/stores";
 import { useNotificationsStore } from "@/stores/notifications";
 
 const store = useServicesStore();

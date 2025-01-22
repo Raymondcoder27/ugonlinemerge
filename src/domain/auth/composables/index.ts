@@ -1,6 +1,6 @@
 import { useStorage, type RemovableRef } from "@vueuse/core"
 import { computed, type ComputedRef } from "vue"
-import type { JwtTokenInterface, SignInResponseInterface } from "@/domain/auth/types"
+import type { JwtTokenInterface, SignInResponseInterface } from "@/agentadmindomain/auth/types"
 import { Buffer } from "buffer"
 
 export function useAuth() {

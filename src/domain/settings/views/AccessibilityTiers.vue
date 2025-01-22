@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {useSettingsStore} from "@/domain/settings/stores";
+import {useSettingsStore} from "@/agentadmindomain/settings/stores";
 
 const store = useSettingsStore()
 </script>

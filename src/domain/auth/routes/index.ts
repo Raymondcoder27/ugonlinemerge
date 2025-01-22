@@ -10,7 +10,7 @@ export const routes: RouteRecordRaw[] = [
       {
         path: "/account/sign-in",
         name: "app-account-sign-in",
-        component: () => import("@/domain/auth/views/SignIn.vue"),
+        component: () => import("@/agentadmindomain/auth/views/SignIn.vue"),
         meta: { requiresAuth: false }
       }
     ]

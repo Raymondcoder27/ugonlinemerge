@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
-import PieChart from "@/domain/analytics/components/PieChart.vue";
+import PieChart from "@/agentadmindomain/analytics/components/PieChart.vue";
 
 import type {Ref} from "vue";
-import type {GraphData, Statistic} from "@/domain/analytics/types/chart";
+import type {GraphData, Statistic} from "@/agentadmindomain/analytics/types/chart";
 import {ref} from "vue";
-import AreaChart from "@/domain/analytics/components/AreaChart.vue";
+import AreaChart from "@/agentadmindomain/analytics/components/AreaChart.vue";
 
 const revenueByTime: Ref<Array<GraphData>> = ref([
   {

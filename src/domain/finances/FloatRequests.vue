@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import AppModal from "@/components/AppModal.vue";
-import { useBilling } from "@/domain/finances/stores";
+import { useBilling } from "@/agentadmindomain/finances/stores";
 import { onMounted, ref, reactive, watch, computed, type Ref } from "vue";
 import { useDebounceFn } from "@vueuse/core";
 import type { IGoFilter } from "@/types";
 // import { request } from "http";
 // import { useDebounce } from "@vueuse/core";
 import moment from "moment/moment";
-import { useBalance } from "@/domain/balance/stores";
+import { useBalance } from "@/agentadmindomain/balance/stores";
 // import { FloatRequest } from "@/agentdomain/ledger/types/chart";
-import { FloatRequest } from "@/domain/finances/types";
+import { FloatRequest } from "@/agentadmindomain/finances/types";
 
 const balanceStore = useBalance();
 

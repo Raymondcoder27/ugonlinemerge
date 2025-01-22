@@ -2,7 +2,7 @@
   <script setup lang="ts">
 import type { Ref } from "vue";
 import { ref, computed } from "vue";
-import { useServicesStore } from "@/domain/services/stores";
+import { useServicesStore } from "@/agentadmindomain/services/stores";
 const page: Ref<number> = ref(1);
 const limit: Ref<number> = ref(12);
 const subscribedServices: Ref<any[]> = ref([]);

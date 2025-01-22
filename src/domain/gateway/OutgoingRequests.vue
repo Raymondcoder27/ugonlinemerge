@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
 import {onMounted, ref, type Ref} from "vue";
-import {useGatewayStore} from "@/domain/gateway/stores";
+import {useGatewayStore} from "@/agentadmindomain/gateway/stores";
 import moment from "moment/moment";
-import CreateServiceProvider from "@/domain/entities/views/CreateServiceProvider.vue";
+import CreateServiceProvider from "@/agentadmindomain/entities/views/CreateServiceProvider.vue";
 import AppModal from "@/components/AppModal.vue";
-import PayloadPreview from "@/domain/gateway/components/PayloadPreview.vue";
+import PayloadPreview from "@/agentadmindomain/gateway/components/PayloadPreview.vue";
 
 const loading: Ref<boolean> = ref(false)
 const page: Ref<number> = ref(1);
