@@ -11,11 +11,31 @@ export interface TotalBalance {
   currentBalance: number;
 }
 
+export interface TotalAvailableFloat {
+  prevAvailableFloat: number;
+  currentAvailableFloat: number;
+}
+
+export interface TotalFinalFloat {
+  prevFinalFloat: number;
+  currentFinalFloat: number;
+}
+
 export const useBalance = defineStore("balance", () => {
   // Reactive state for total balance
   const totalBalance = reactive<TotalBalance>({
     prevBalance: 300000000, // Initial previous balance
     currentBalance: 300000000, // Initial current balance
+  });
+
+  const availableFloat = reactive<TotalAvailableFloat>({
+    prevAvailableFloat: 300000000,
+    currentAvailableFloat: 300000000,
+  });
+
+  const finalFloat = reactive<TotalFinalFloat>({
+    prevFinalFloat: 120000000,
+    currentFinalFloat: 120000000,
   });
 
   const billingStore = useBilling();
@@ -100,10 +120,26 @@ async function fetchTotalBalance() {
   console.log("Updated balance in store:", totalBalance); // Debugging
 }
 
+async function fetchFinalFloatBalance() {
+  console.log("Fetching final float")
+  const fetchedBalance = {
+    prevBalance: finalFloat.prevFinalFloat,
+    currentBalance: finalFloat.currentFinalFloat,
+  };
+
+  console.log("Fetched Balance:", fetchedBalance)
+  finalFloat.prevFinalFloat = fetchedBalance.prevBalance;
+  finalFloat.currentFinalFloat = fetchedBalance.currentBalance;
+  console.log("Updated balance in store: ", finalFloat)
+}
+
   return {
     totalBalance,
+    availableFloat,
+    finalFloat,
     approveFloatRequest,
     fetchTotalBalance,
+    fetchFinalFloatBalance,
     increaseTotalBalance,
     decreaseTotalBalance,
   };
