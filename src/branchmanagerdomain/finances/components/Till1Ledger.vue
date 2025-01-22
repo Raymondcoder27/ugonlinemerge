@@ -3,7 +3,7 @@ import AppModal from "@/components/AppModal.vue";
 import { onMounted, ref, reactive, watch, computed, type Ref } from "vue";
 // import { useBilling } from "@/branchmanagerdomain/finances/stores"; // Import the appropriate store
 // import { useBilling } from "@/branchmanagerdomain/finances/dummystore"; // Import the appropriate store
-import { useBilling } from "@/branchmanagerdomain/finances/dummystore/index";
+import { useBilling } from "@/branchmanagerdomain/finances/stores";
 import { useDebounceFn } from "@vueuse/core";
 import type {
   Transaction,
