@@ -9,11 +9,29 @@ import { useDebounceFn } from "@vueuse/core";
 import type {
   IResendVerificationPayload,
   TAccountVerificationType,
+  ManagerAccount,
+  Account,
 } from "./types";
 // import AddManager from "@/agentadmindomain/accounts/components/AddManager.vue";
-import EditManager from "@/agentadmindomain/accounts/components/EditManager.vue";
+import EditBranchManager from "@/agentadmindomain/accounts/components/EditManager.vue";
 
 import { useBranchStore } from "@/agentadmindomain/branches/stores"; // Updated import
+
+const editModalOpen: Ref<boolean> = ref(false);
+const viewModalOpen: Ref<boolean> = ref(false);
+
+function editManagerAccount(branchManagerAccount: ManagerAccount) {
+  localStorage.setItem(
+    "branchManagerAccount",
+    JSON.stringify(branchManagerAccount)
+  );
+  editModalOpen.value = true;
+}
+function close() {
+  modalOpen.value = false;
+  viewModalOpen.value = false;
+  editModalOpen.value = false;
+}
 
 const pageInput = ref(1);
 const changePageSize = () => {
@@ -45,13 +63,13 @@ function fetchManagerAccounts() {
   // Fetch the services based on the page and limit
   const startIndex = (page.value - 1) * limit.value;
   const endIndex = startIndex + limit.value;
-  managerAccounts.value = store.managerAccounts.slice(startIndex, endIndex);
+  managerAccounts.value = store.managerAccounts?.slice(startIndex, endIndex);
   loading.value = false;
 }
 const paginatedManagersAccounts = computed(() => {
   const start = (page.value - 1) * limit.value;
   const end = start + limit.value;
-  return store.managerAccounts.slice(start, end); // Adjust according to your page & limit
+  return store.managerAccounts?.slice(start, end); // Adjust according to your page & limit
 });
 
 const branchStore = useBranchStore();
@@ -106,9 +124,9 @@ function open() {
   modalOpen.value = true;
 }
 
-function close() {
-  modalOpen.value = false;
-}
+// function close() {
+//   modalOpen.value = false;
+// }
 
 const reVerifyForm: IResendVerificationPayload = reactive({
   purpose: "",
@@ -277,15 +295,15 @@ onMounted(() => {
             <td class="text-right">
               <div class="text-center" v-if="!account.blockedAt">
                 <!-- <span
-                    class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-200 hover:text-blue-700"
+                    class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-800"
                     @click="viewDetails(account.id)"
                   > -->
                 <span
                   class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-200 hover:text-blue-700"
-                  @click="modalOpen = true"
+                  @click="editManagerAccount(account)"
                 >
                   <i class="fa fa-eye"></i>
-                  View
+                  View Details
                 </span>
                 <!-- <i class="text-gray-600 fa-solid fa-pencil px-1 border border-gray-300 p-1 hover:text-white hover:bg-gray-600"
                   @click="open()"></i>
@@ -382,8 +400,8 @@ onMounted(() => {
   </div>
 
   <!-- Modal -->
-  <AppModal v-model="modalOpen" xl2>
-    <EditManager @managerAccountCreated="close" @cancel="close" />
+  <AppModal v-model="editModalOpen" xl2>
+    <EditBranchManager @managerAccountCreated="close" @cancel="close" />
   </AppModal>
   <!-- /Modal -->
 </template>

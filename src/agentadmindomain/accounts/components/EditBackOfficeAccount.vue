@@ -1,27 +1,47 @@
 <script setup lang="ts">
 
 import {onMounted, reactive, type Ref, ref} from "vue";
-import {useProviderStore} from "@/agentadmindomain/providers/stores";
-import { useAccountStore } from "@/agentadmindomain/auth/stores";
-import type {CreateServiceProvider} from "@/agentadmindomain/providers/types";
+import {useAccounts} from "@/agentadmindomain/accounts/stores";
+// import { useAccountStore } from "@/agentadmindomain/auth/stores";
+import type {Account} from "@/agentadmindomain/types";
 import {useNotificationsStore} from "@/stores/notifications";
 import type {ApiError} from "@/types";
 
-const store = useProviderStore()
-const accountStore = useAccountStore()
+// const store = useProviderStore()
+// const accountStore = useAccounts()
+const store = useAccounts()
 const loading: Ref<boolean> = ref(false)
 const notify =useNotificationsStore()
 
-let form: CreateServiceProvider = reactive({
-  name: "",
-  displayName: "",
-  displayLogo: null,
-  providerType:"GOVERNMENT",
-  physicalAddress: "",
-  inquiryEmail:"",
-  inquiryPhoneNumber:"",
-  username: ""
+// let form: CreateServiceProvider = reactive({
+//   name: "",
+//   displayName: "",
+//   displayLogo: null,
+//   providerType:"GOVERNMENT",
+//   physicalAddress: "",
+//   inquiryEmail:"",
+//   inquiryPhoneNumber:"",
+//   username: ""
+// })
+
+let form: Account = reactive({
+  id: "",
+  firstName: "",
+  lastName: "",
+  middleNames: "",
+  // middleName: "",
+  idType: "",
+  email: "",
+  role: "",
+  username: "",  // emailVerified: boolean
+  // phoneVerified: boolean
+  phone: "",
+  status: "",
+  createdAt: "",
+  activatedAt: "",
+  blockedAt: "",
 })
+
 const emit = defineEmits(['cancel'])
 
 // onMounted(() => {
@@ -40,29 +60,31 @@ onMounted(() => {
   let data = JSON.parse(<string>localStorage.getItem("backofficeAccount"))
 
   form.name = data.name
-  form.displayName = data.displayName
-  form.physicalAddress = data.physicalAddress
-  form.inquiryEmail = data.inquiryEmail
-  form.inquiryPhoneNumber = data.inquiryPhoneNumber
+  form.firstName = data.firstName
+  form.lastName = data.lastName
+  form.middleNames = data.middleNames
+  form.email = data.email
+  form.phone = data.phone
+  form.status = data.status
   form.username = data.username
 })
 
 function submit(){
   loading.value = true
-  let data = JSON.parse(<string>localStorage.getItem("provider"))
+  let data = JSON.parse(<string>localStorage.getItem("backofficeAccount"))
 
   let id = data.id
   let payload = {
-    name:form.name,
-    display_name:form.displayName,
-    inquiry_email:form.inquiryEmail,
-    provider_type:form.providerType,
-    inquiry_phone_number:form.inquiryPhoneNumber,
-    physical_address:form.physicalAddress,
+    firstName:form.firstName,
+    lastName: form.lastName,
+    middleNames: form.middleNames,
+    email: form.email,
+    phone: form.phone,
+    status: form.status,
     username:form.username
   }
   store
-      .editProvider(id, payload)
+      .editBackofficeAccount(id, payload)
       .then(() => {
         loading.value = false
         window.location.reload()
@@ -78,12 +100,12 @@ function submit(){
 
 <template>
   <div class="bg-white py-5">
-    <p class="text-xl font-bold">Edit Service Provider</p>
+    <p class="text-xl font-bold">Edit BackOffice Account</p>
     <p class="text-sm text-gray-500" v-if="form.name"><b>{{form.name}}</b> provides a services consumed by the general public of Uganda.</p>
     <form @submit.prevent="submit" class="pt-5">
-      <div class="flex">
+      <!-- <div class="flex">
         <div class="cell-full">
-          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Provider Name</label>
+          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">First Name</label>
           <input type="text" v-model="form.name" class="noFocus form-element e-input w-full"
                  required />
         </div>
@@ -97,39 +119,40 @@ function submit(){
             <option value="PRIVATE">Private Company</option>
           </select>
         </div>
-      </div>
+      </div> -->
 
       <div class="flex">
         <div class="cell">
-          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Display Name</label>
-          <input type="text" v-model="form.displayName" class="noFocus form-element e-input w-full"
+          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">First Name</label>
+          <input type="text" v-model="form.firstName" class="noFocus form-element e-input w-full"
                  required />
         </div>
         <div class="cell">
-          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Username</label>
-          <input type="text" v-model="form.username" class="noFocus form-element e-input w-full"
+          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Last Name</label>
+          <input type="text" v-model="form.lastName" class="noFocus form-element e-input w-full"
                  required />
         </div>
       </div>
 
-      <p class="text-sm font-bold pt-5">Provider Inquiry Details</p>
-      <div class="flex">
-        <div class="cell">
-          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Inquiry Email Address</label>
-          <input type="email" v-model="form.inquiryEmail" class="noFocus form-element e-input w-full"/>
-        </div>
-        <div class="cell">
-          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Inquiry Phone Number</label>
-          <input type="tel" v-model="form.inquiryPhoneNumber" class="noFocus form-element e-input w-full"/>
-        </div>
-      </div>
       <div class="flex">
         <div class="cell-full">
-          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Physical Address</label>
-          <textarea v-model="form.physicalAddress" class="noFocus form-element e-input w-full" cols="4"
-                    placeholder="Address Description"/>
+          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">User Name</label>
+          <input v-model="form.username"  class="noFocus form-element e-input w-full"/>
         </div>
       </div>
+
+      <p class="text-sm font-bold pt-5">Account Inquiry Details</p>
+      <div class="flex">
+        <div class="cell">
+          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Email Address</label>
+          <input type="email" v-model="form.email" class="noFocus form-element e-input w-full"/>
+        </div>
+        <div class="cell">
+          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Phone Number</label>
+          <input type="tel" v-model="form.phone" class="noFocus form-element e-input w-full"/>
+        </div>
+      </div>
+      
 
       <div class="flex my-2 py-5">
         <div class="w-6/12 px-1">
