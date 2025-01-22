@@ -3,7 +3,7 @@ import AppModal from "@/components/AppModal.vue";
 import { onMounted, ref, type Ref, watch, computed } from "vue";
 import CreateTill from "@/branchmanagerdomain/tills/components/CreateBranch.vue";
 import { useTillStore } from "@/branchmanagerdomain/tills/stores"; // Updated import
-import type { Till } from "@/branchmanagerdomain/tills/types"; // Assuming you have a Branch type
+import type { Till } from "@/branchmanagerdomain/tills/types"; // Assuming you have a till type
 import moment from "moment/moment";
 import router from "@/router";
 import { useProviderStore } from "@/branchmanagerdomain/entities/stores";
@@ -56,7 +56,7 @@ const jumpToPage = () => {
 
 // Helper function to get manager by branch
 const getOperatorByTill = (tillName) => {
-  return accountStore.tillOperatorAccounts.find(
+  return accountStore.tillOperators.find(
     (operator) => operator.till === tillName
   );
 };
@@ -85,21 +85,21 @@ function fetchTills() {
   loading.value = false;
 }
 
-function open(branch: Till) {
-  router.push({ name: "till-details", params: { id: branch.id } });
+function open(till: Till) {
+  router.push({ name: "till-details", params: { id: till.id } });
 }
 
 // edit branch
-function edit(branch: Till) {
+function edit(till: Till) {
   editModalOpen.value = true;
-  // localStorage.setItem("branch", JSON.stringify(branch));
-  console.log("Branch to edit: ", branch);
+  // localStorage.setItem("branch", JSON.stringify(till));
+  console.log("Branch to edit: ", till);
 }
 
 //configure branch
-function configure(branch: Till) {
-  localStorage.setItem("branch", JSON.stringify(branch));
-  router.push({ name: "till-configuration", params: { id: branch.id } });
+function configure(till: Till) {
+  localStorage.setItem("till", JSON.stringify(till));
+  router.push({ name: "till-configuration", params: { id: till.id } });
 }
 
 function convertDateTime(date: string) {
@@ -166,12 +166,12 @@ watch(
 const paginatedTills = computed(() => {
   const start = (page.value - 1) * limit.value;
   const end = start + limit.value;
-  return tillStore.tills.slice(start, end); // Adjust according to your page & limit
+  return tillStore.tills?.slice(start, end); // Adjust according to your page & limit
 });
 
 // Helper function to assign managers to tills
 const assignOperatorsToTills = () => {
-  tillStore.tills.forEach((till) => {
+  tillStore.tills?.forEach((till) => {
     const operator = getOperatorByTill(till.name);
     if (operator) {
       till.operator = operator;
@@ -192,9 +192,9 @@ const assignOperatorsToTills = () => {
 onMounted(() => {
   loading.value = true;
   fetchTills();
-  // accountStore.fetchManagerAccounts();
+  accountStore.fetchTillOperators();
   tillStore.fetchTills();
-  accountStore.fetchTillOperatorAccounts();
+  // accountStore.fetchTillOperators();
   // allocateManager();
   assignOperatorsToTills();
 });
@@ -289,7 +289,7 @@ onMounted(() => {
         <tbody>
           <!-- <tr
             class="body-tr"
-            v-for="(branch, idx) in tillStore.tills"
+            v-for="(till, idx) in tillStore.tills"
             :key="idx"
           > -->
           <tr
@@ -307,7 +307,7 @@ onMounted(() => {
                 </span>
                 <!-- <i
                   class="fa-solid fa-link p-1 mx-1 text-gray-600 bg-gray-50 hover:text-primary-700"
-                  @click="tag(branch)"
+                  @click="tag(till)"
                 ></i> -->
               </label>
             </td>
@@ -322,7 +322,7 @@ onMounted(() => {
               <div v-else>
                 <button
                   class="bg-red-200 rounded-md font-semibold text-red-700 p-1 hover:underline"
-                  @click="allocateManager(branch)"
+                  @click="allocateManager(till)"
                 >
                   Allocate Manager
                 </button>
@@ -338,7 +338,7 @@ onMounted(() => {
                 </label>
               </div>
 
-              <!-- Second Case: Manager directly assigned to branch -->
+              <!-- Second Case: Manager directly assigned to till -->
               <div v-else-if="till.operator">
                 <label>
                   {{ till.operator.firstName }} {{ till.operator.lastName }}
@@ -349,7 +349,7 @@ onMounted(() => {
               <!-- <div v-else>
                 <button
                   class="bg-red-200 rounded-sm text-xs font-semibold text-red-700 px-1.5 py-1 hover:underline"
-                  @click="assignManager(branch)"
+                  @click="assignManager(till)"
                 >
                   <i class="fa fa-user-plus"></i>
                   Assign Manager
@@ -378,11 +378,11 @@ onMounted(() => {
 
             <!-- <i
                 class="fa-solid fa-eye p-1 mx-1 text-blue-600 bg-blue-100 border border-blue-200 hover:text-blue-700"
-                @click="open(branch)"
+                @click="open(till)"
               ></i>
   <i
                 class="fa-solid fa-trash p-1 mx-1 text-red-600 bg-red-100 border border-red-200 hover:text-red-700"
-                @click="deleteBranch(branch.id)"
+                @click="deleteBranch(till.id)"
               ></i>
             <td class="text-center">
   <span>{{ branch.status }}</span>
@@ -395,12 +395,12 @@ onMounted(() => {
             <td class="text-right">
               <!-- <i
                 class="fa-solid fa-eye p-1 mx-1 text-blue-600 bg-blue-100 border border-blue-200 hover:text-blue-700"
-                @click="open(branch)"
+                @click="open(till)"
               ></i> -->
               <span
-                class="p-1 mx-1 rounded-md text-white bg-blue-600 hover:bg-blue-200 hover:text-blue-700"
+                class="p-1 mx-1 rounded-md text-white bg-blue-600 hover:bg-blue-800"
               >
-                <i class="fa-solid fa-pen" @click="edit(branch)"></i>
+                <i class="fa-solid fa-pen" @click="edit(till)"></i>
                 Edit
               </span>
 
@@ -514,3 +514,4 @@ onMounted(() => {
 @import "@/assets/styles/table.css";
 @import "@/assets/styles/widgets.css";
 </style>
+<!-- @/branchmanagerdomain/finances/stores/index2@/branchmanagerdomain/finances/stores/index2@/branchmanagerdomain/finances/stores/index copy -->
