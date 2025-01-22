@@ -385,7 +385,7 @@ watch(
             <td>
               <div class="" v-if="application.status === 'FAILED'">
                 <span
-                  class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-800"
+                  class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-200 hover:text-blue-700"
                   @click="confirm(application)"
                 >
                   <i class="fa fa-redo"></i>
