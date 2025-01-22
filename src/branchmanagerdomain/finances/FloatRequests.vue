@@ -32,7 +32,6 @@ const selectedFloatRequest: Ref<FloatRequest | undefined> = ref();
 
 const modalOpen: Ref<boolean> = ref(false);
 
-
 function view(request: FloatRequest) {
   modalOpen.value = true;
   selectedFloatRequest.value = request;
@@ -141,7 +140,6 @@ watch(
 function convertDateTime(date: string) {
   return moment(date).format("DD-MM-YYYY HH:mm:ss");
 }
-
 
 function statusStyling(status?: string) {
   if (status == "PENDING") {
@@ -562,12 +560,9 @@ onMounted(() => {
     </div>
   </div>
 
-
-
-
-    <!-- Modal -->
-    <AppModal v-model="modalOpen" xl4>
-      <p class="text-xl font-bold">Float Request Details</p>
+  <!-- Modal -->
+  <AppModal v-model="modalOpen" xl4>
+    <p class="text-xl font-bold">Float Request Details</p>
     <div class="flex">
       <div class="w-full">
         <table class="w-12">
@@ -601,7 +596,9 @@ onMounted(() => {
                   <div class="w-6/12">
                     <div :class="statusStyling(selectedFloatRequest?.status)">
                       <div class="w-4/12 text-center">
-                        <i :class="statusIcon(selectedFloatRequest?.status)"></i>
+                        <i
+                          :class="statusIcon(selectedFloatRequest?.status)"
+                        ></i>
                       </div>
                       <div class="w-8/12">
                         <label v-if="selectedFloatRequest?.status == 'SENT'">
@@ -626,7 +623,9 @@ onMounted(() => {
             </tr> -->
             <tr class="border border-gray-50">
               <td class="p-1 font-bold">Date</td>
-              <td class="p-1">{{ convertDateTimeNullable(selectedFloatRequest?.createdAt) }}</td>
+              <td class="p-1">
+                {{ convertDateTimeNullable(selectedFloatRequest?.createdAt) }}
+              </td>
             </tr>
             <!-- <tr class="border border-gray-50">
               <td class="p-1 font-bold">Payload</td>
@@ -638,7 +637,6 @@ onMounted(() => {
                 </div>
               </td>
             </tr> -->
-
           </tbody>
         </table>
       </div>
