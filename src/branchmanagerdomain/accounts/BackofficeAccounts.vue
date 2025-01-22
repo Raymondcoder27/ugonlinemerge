@@ -3,6 +3,7 @@ import AppModal from "@/components/AppModal.vue";
 import { useAccounts } from "@/branchmanagerdomain/accounts/stores";
 import { onMounted, type Ref, ref, watch, reactive, computed } from "vue";
 import CreateAccount from "@/branchmanagerdomain/accounts/components/CreateAccount.vue";
+import EditBackOfficeAccount from "@/branchmanagerdomain/accounts/components/EditBackOfficeAccount.vue";
 import moment from "moment";
 import type { IGoFilter } from "@/types";
 import { useDebounceFn } from "@vueuse/core";
@@ -10,6 +11,20 @@ import type {
   IResendVerificationPayload,
   TAccountVerificationType,
 } from "./types";
+
+const editModalOpen: Ref<boolean> = ref(false);
+const viewModalOpen: Ref<boolean> = ref(false);
+
+
+  function editBackofficeAccount(backofficeAccount:Account) {
+  localStorage.setItem("backofficeAccount", JSON.stringify(backofficeAccount))
+  editModalOpen.value = true;
+}
+function close() {
+  modalOpen.value = false;
+  viewModalOpen.value = false;
+  editModalOpen.value = false;
+}
 
 const page: Ref<number> = ref(1);
 const limit: Ref<number> = ref(5);
@@ -107,9 +122,9 @@ function open() {
   modalOpen.value = true;
 }
 
-function close() {
-  modalOpen.value = false;
-}
+// function close() {
+//   modalOpen.value = false;
+// }
 
 const reVerifyForm: IResendVerificationPayload = reactive({
   purpose: "",
@@ -293,19 +308,19 @@ watch(
                   <i class="text-gray-600 fa-solid fa-trash px-1 border border-gray-300 p-1 hover:text-white hover:bg-gray-600"
                   @click="open()"></i> -->
                 <!-- <span
-                    class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-200 hover:text-blue-700"
+                    class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-800"
                     @click="viewDetails(account.id)"
                   > -->
                 <!-- <span
-                  class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-200 hover:text-blue-700"
+                  class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-800"
                   @click="modalOpen = true"
                 > -->
                 <span
                   class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-200 hover:text-blue-700"
-                  @click="modalOpen = true"
+                  @click="editBackofficeAccount(account)"
                 >
                   <i class="fa fa-eye"></i>
-                  View
+                  View Details
                 </span>
               </div>
             </td>
@@ -328,7 +343,7 @@ watch(
       </div> -->
       <!-- <td>
         <span
-                    class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-200 hover:text-blue-700"
+                    class="bg-blue-600 rounded-md font-semibold text-white px-1 py-1 hover:bg-blue-800"
                     @click="confirm(transaction)"
                   >
                   <i class="fa fa-redo"></i>
@@ -406,9 +421,16 @@ watch(
 
   <!-- Modal -->
   <AppModal v-model="modalOpen" xl2>
-    <CreateAccount @backOfficeAccountCreated="close" @cancel="close" />
+    <CreateAccount @tillOperatorAccountCreated="close" @cancel="close" />
   </AppModal>
   <!-- /Modal -->
+
+  <AppModal v-model="editModalOpen" xl2>
+    <!-- Put here whatever makes you smile -->
+    <!-- Chances are high that you're starting with a form -->
+    <EditBackOfficeAccount @cancel="close"/>
+    <!-- That's also okay -->
+  </AppModal>
 </template>
 
 <style scoped>
