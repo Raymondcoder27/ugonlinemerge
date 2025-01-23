@@ -128,6 +128,8 @@ export const useBilling = defineStore("billing", () => {
   //first make float requests array with statuses: pending, approved, rejected
   const floatRequests = ref<FloatRequest[]>(dummyFloatRequests);
 
+  const floatRequest = ref<FloatRequest | null>(null);
+
   //fetch float requests
   async function fetchFloatRequests() {
     // Simulate API call
@@ -173,20 +175,29 @@ export const useBilling = defineStore("billing", () => {
   //   saveFloatRequestToLocalStorage();
   // }
 
+
+  const requestFloat = async (payload:RequestFloat) => {
+    return api.post("//till-operator/request-float", payload)
+        .then((response: AxiosResponse<ApiResponse<any>>) => {
+            floatRequest.value = response.data.data
+            console.log("Request Float response:", floatRequest);
+        })
+}
+
   // using the api
-  async function requestFloat(payload: RequestFloat) {
-    // Simulate API call
-    // const response = await fetch(`/till-operator/request-float`, {
-      const response = await api.post(`/till-operator/request-float`, {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    console.log("Request Float response:", data);
-  }
+  // async function requestFloat(payload: RequestFloat) {
+  //   // Simulate API call
+  //   // const response = await fetch(`/till-operator/request-float`, {
+  //     const response = await api.post(`/till-operator/request-float`, {
+  //     method: "POST",
+  //     body: JSON.stringify(payload),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   });
+  //   const data = await response.json();
+  //   console.log("Request Float response:", data);
+  // }
 
   const floatRequestToBranchManagerLocalStorage = ref<FloatRequest[]>([]);
 
