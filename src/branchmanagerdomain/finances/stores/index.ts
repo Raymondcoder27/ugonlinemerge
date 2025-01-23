@@ -337,7 +337,7 @@ export const useBilling = defineStore("billing", () => {
     return api.post(`/branch-manager/approve-float-requests/${requestId}`)
         .then((response: AxiosResponse<ApiResponse<any>>) => {
             console.log("Approve Float Request response:", response.data);
-            // fetchFloatRequests();
+            fetchFloatRequests();
             // fetchFloatLedgers();
             // fetchFloatAllocations();
         })
