@@ -177,7 +177,7 @@ export const useBilling = defineStore("billing", () => {
 
 
   const requestFloat = async (payload:RequestFloat) => {
-    return api.post("//till-operator/request-float", payload)
+    return api.post("/till-operator/request-float", payload)
         .then((response: AxiosResponse<ApiResponse<any>>) => {
             floatRequest.value = response.data.data
             console.log("Request Float response:", floatRequest);
