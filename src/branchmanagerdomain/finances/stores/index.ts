@@ -333,7 +333,7 @@ export const useBilling = defineStore("billing", () => {
   // }
 
   //approve the float request using the api
-  async function approveFloatRequest(requestId: number) {
+  async function approveFloatRequest(requestId: any) {
     console.log("Request ID:", requestId); // Debugging
     // return api.post(`/branch-manager/approve-float-request/${requestId}`)
     return api.post("/branch-manager/approve-float-request/"+requestId)
