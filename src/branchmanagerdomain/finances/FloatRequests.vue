@@ -368,11 +368,12 @@ onMounted(() => {
           > -->
             <td>{{ id + 1 }}</td>
             <!-- <td class="text-left">{{  convertDateTime(request.date) }}</td> -->
-            <td class="text-left">{{ request.requestDate }}</td>
-            <!-- <td class="text-left">{{ request.dateRequested }}</td> -->
+            <!-- <td class="text-left">{{ request.requestDate }}</td> -->
+            <td class="text-left">{{ request.createdAt }}</td>
             <!-- convertDateTime(request.createdAt) -->
             <td class="text-left">{{ request.till }}</td>
-            <td class="text-left">{{ request.amount.toLocaleString() }}</td>
+            <!-- <td class="text-left">{{ request.amount.toLocaleString() }}</td> -->
+            <td class="text-left">{{ request.amount }}</td>
             <td class="text-left">
               <!-- First Case: float request approved -->
               <div v-if="request.status === 'approved'">
