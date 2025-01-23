@@ -175,7 +175,7 @@ export const useBilling = defineStore("billing", () => {
   // using the api
   async function requestFloat(payload: RequestFloat) {
     // Simulate API call
-    const response = await fetch(`/api/float-requests`, {
+    const response = await fetch(`/api/till-operator/request-float`, {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
@@ -183,6 +183,7 @@ export const useBilling = defineStore("billing", () => {
       },
     });
     const data = await response.json();
+    console.log("Request Float response:", data);
   }
 
 
