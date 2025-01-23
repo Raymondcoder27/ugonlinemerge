@@ -224,8 +224,8 @@ export const useBilling = defineStore("billing", () => {
       description: payload.description,
       amount: payload.amount,
       balance: totalBalance.value + payload.amount,
-      // status: "pending",
-      status: "success",
+      status: "pending",
+      // status: "success",
     })
   }
 
