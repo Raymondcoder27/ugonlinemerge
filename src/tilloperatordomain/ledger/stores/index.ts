@@ -3,6 +3,7 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import moment from "moment";
+import api from "@/config/api";
 import type { Transaction, FloatLedger, FloatRequest, RequestFloat } from "@/tilloperatordomain/billing/types";
 
 export const useBilling = defineStore("billing", () => {
@@ -175,7 +176,8 @@ export const useBilling = defineStore("billing", () => {
   // using the api
   async function requestFloat(payload: RequestFloat) {
     // Simulate API call
-    const response = await fetch(`/till-operator/request-float`, {
+    // const response = await fetch(`/till-operator/request-float`, {
+      const response = await api.post(`/till-operator/request-float`, {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
