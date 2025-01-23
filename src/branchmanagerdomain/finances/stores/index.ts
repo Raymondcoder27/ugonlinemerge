@@ -91,13 +91,14 @@ export const useBilling = defineStore("billing", () => {
   const tillOperators = ref<TillOperator[]>(dummyTillOperators);
   const floatAllocations = ref<FloatAllocation[]>(dummyFloatAllocations);
   // const floatRequests = ref<FloatRequest[]>(dummyFloatRequests);
+  const floatRequests = ref<FloatRequest[]>([]);
 
 
-  const floatRequests = JSON.parse(localStorage.getItem('floatRequestToBranchManagerLocalStorage') || '[]');
+  // const floatRequests = JSON.parse(localStorage.getItem('floatRequestToBranchManagerLocalStorage') || '[]');
 
-  if (floatRequests) {
-    floatRequests.value = floatRequests;
-  }
+  // if (floatRequests) {
+  //   floatRequests.value = floatRequests;
+  // }
 
 
   // Actions to fetch data
@@ -145,8 +146,8 @@ export const useBilling = defineStore("billing", () => {
 
   // using the api
   
-  const fetchFloatRequests = async (payload:FormData) => {
-    return api.get("/till-operator/float-requests", payload)
+  const fetchFloatRequests = async () => {
+    return api.get("/till-operator/float-requests")
         .then((response: AxiosResponse<ApiResponse<any>>) => {
             floatRequests.value = response.data.data
         })
