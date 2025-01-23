@@ -263,6 +263,7 @@ const rejectFloatRequest = (requestId: any) => {
 
 onMounted(() => {
   billingStore.fetchFloatRequests();
+  console.log(billingStore.floatRequests);
 });
 </script>
 
