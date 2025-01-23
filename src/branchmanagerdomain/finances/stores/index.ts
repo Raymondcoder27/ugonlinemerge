@@ -136,10 +136,19 @@ export const useBilling = defineStore("billing", () => {
     floatAllocations.value = dummyFloatAllocations;
   }
 
-  async function fetchFloatRequests(filter: any) {
+  // async function fetchFloatRequests(filter: any) {
+  //   // Simulate API call
+  //   // You can adjust this based on the filtering criteria or paging
+  //   floatRequests.value = dummyFloatRequests;
+  // }
+
+  // using the api
+   async function fetchFloatRequests(filter: any) {
     // Simulate API call
-    // You can adjust this based on the filtering criteria or paging
-    floatRequests.value = dummyFloatRequests;
+    const response = await fetch(`/api/float-requests?limit=${filter.limit}&page=${filter.page}`);
+    const data = await response.json();
+    // Use dummy data for now
+    // floatRequests.value = dummyFloatRequests;
   }
 
   // function submit() {
