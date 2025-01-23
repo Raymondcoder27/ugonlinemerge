@@ -18,7 +18,7 @@ export const useBilling = defineStore("billing", () => {
   //   { id: 2, name: "Sample FloatLedger 2", balance: 1000 },
   //   { id: 3, name: "Sample FloatLedger 3", balance: 1500 },
 
-  
+
   // ];
 
 
@@ -148,29 +148,43 @@ export const useBilling = defineStore("billing", () => {
   // }
 
   // request float function, push to the float requests array
-  function requestFloat(payload: RequestFloat) {
-    floatRequests.value.push({
-      id: floatRequests.value.length + 1,
-      requestDate: new Date().toISOString(),
-      amount: payload.amount,
-      status: "pending",
-      // status: "success",
-      // tillId: payload.tillId,
-            tillId: "Till 1",
-      description: "Till " + payload.tillId,
-    })
-    //save to localstorage
-    floatRequestToBranchManagerLocalStorage.value.push({
-      id: floatRequests.value.length + 1,
-      requestDate: new Date().toISOString(),
-      amount: payload.amount,
-      status: "success",
-      // tillId: payload.tillId,
-      tillId: "Till 1",
-      branch: "Branch 1"
-    })
-    saveFloatRequestToLocalStorage();
+  // function requestFloat(payload: RequestFloat) {
+  //   floatRequests.value.push({
+  //     id: floatRequests.value.length + 1,
+  //     requestDate: new Date().toISOString(),
+  //     amount: payload.amount,
+  //     status: "pending",
+  //     // status: "success",
+  //     // tillId: payload.tillId,
+  //           tillId: "Till 1",
+  //     description: "Till " + payload.tillId,
+  //   })
+  //   //save to localstorage
+  //   floatRequestToBranchManagerLocalStorage.value.push({
+  //     id: floatRequests.value.length + 1,
+  //     requestDate: new Date().toISOString(),
+  //     amount: payload.amount,
+  //     status: "success",
+  //     // tillId: payload.tillId,
+  //     tillId: "Till 1",
+  //     branch: "Branch 1"
+  //   })
+  //   saveFloatRequestToLocalStorage();
+  // }
+
+  // using the api
+  async function requestFloat(payload: RequestFloat) {
+    // Simulate API call
+    const response = await fetch(`/api/float-requests`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
   }
+
 
   const floatRequestToBranchManagerLocalStorage = ref<FloatRequest[]>([]);
 
