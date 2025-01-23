@@ -186,7 +186,6 @@ export const useBilling = defineStore("billing", () => {
     console.log("Request Float response:", data);
   }
 
-
   const floatRequestToBranchManagerLocalStorage = ref<FloatRequest[]>([]);
 
   const saveFloatRequestToLocalStorage = () => {
