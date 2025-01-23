@@ -19,7 +19,7 @@ const totalBalance = balanceStore.totalBalance;
 // const availableFloat = balanceStore.availableFloat;
 const finalFloat = balanceStore.finalFloat;
 
-const activeTab: Ref<string> = ref("floatallocation");
+const activeTab: Ref<string> = ref("floatrequests");
 
 function select(tab: string) {
   activeTab.value = tab;
