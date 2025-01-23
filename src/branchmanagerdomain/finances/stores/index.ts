@@ -264,15 +264,6 @@ export const useBilling = defineStore("billing", () => {
   //   localStorage.setItem('allocateFloatFromRequestToLocalStorage', JSON.stringify(allocateFloatFromRequestToLocalStorage.value))
   // }
 
-  // pass in the requestId
-  // const approveFloatRequest = (requestId: any) => {
-  //   store.approveFloatRequest(requestId);
-  //   store.fetchFloatRequests();
-  //   balanceStore.approveFloatRequest(requestId);
-  //   store.reduceFloatLedger(requestId); 
-  //   console.log(`float request with id ${requestId} approved`);
-  // };
-
   async function reduceFloatLedger(requestId: any) {
     //  This is local storage 
 
@@ -332,14 +323,25 @@ export const useBilling = defineStore("billing", () => {
   // }
 
   // approve float request using passed in Id and set status to approved and modify the floatrequests array
-  function approveFloatRequest(requestId: any) {
-    console.log("changing status")
-    const floatRequest = floatRequests.value.find((request) => request.id === requestId);
-    if (floatRequest) {
-      floatRequest.status = "approved";
-      // floatRequest.approvedBy = "Manager One";
-    }
-  }
+  // function approveFloatRequest(requestId: any) {
+  //   console.log("changing status")
+  //   const floatRequest = floatRequests.value.find((request) => request.id === requestId);
+  //   if (floatRequest) {
+  //     floatRequest.status = "approved";
+  //     // floatRequest.approvedBy = "Manager One";
+  //   }
+  // }
+
+  //approve the float request using the api
+  async function approveFloatRequest(requestId: any) {
+    return api.post(`/branch-manager/approve-float-requests/${requestId}`)
+        .then((response: AxiosResponse<ApiResponse<any>>) => {
+            console.log("Approve Float Request response:", response.data);
+            // fetchFloatRequests();
+            // fetchFloatLedgers();
+            // fetchFloatAllocations();
+        })
+}
 
   // reject float request using passed in Id and set status to rejected
   function rejectFloatRequest(requestId: any) {
