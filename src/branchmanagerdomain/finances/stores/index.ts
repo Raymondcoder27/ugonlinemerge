@@ -2,6 +2,7 @@
 
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import api from "@/config/api";
 import type { Transaction, FloatLedger, BackofficeUser, TillOperator, FloatAllocation, FloatRequest } from "@/branchmanagerdomain/finances/types";
 import type { AllocateFloat } from "@/types";
 
@@ -143,13 +144,13 @@ export const useBilling = defineStore("billing", () => {
   // }
 
   // using the api
-   async function fetchFloatRequests(filter: any) {
-    // Simulate API call
-    const response = await fetch(`/api/float-requests?limit=${filter.limit}&page=${filter.page}`);
-    const data = await response.json();
-    // Use dummy data for now
-    // floatRequests.value = dummyFloatRequests;
-  }
+  
+  const fetchFloatRequests = async (payload:FormData) => {
+    return api.get("/till-operator/float-requests", payload)
+        .then((response: AxiosResponse<ApiResponse<any>>) => {
+            floatRequests.value = response.data.data
+        })
+}
 
   // function submit() {
   //   let payload = {
