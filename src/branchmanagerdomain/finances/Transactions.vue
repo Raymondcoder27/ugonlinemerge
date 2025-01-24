@@ -262,6 +262,7 @@ onMounted(() => {
           <tr class="text-left">
             <th>#</th>
             <th>Tracking Number</th>
+            <th>Transaction ID</th>
             <th>Service</th>
             <th>Provider</th>
             <th>Till</th>
