@@ -302,6 +302,17 @@ onMounted(() => {
                 class="fa-regular fa-copy mx-1 hover:text-gray-800"
               ></i>
             </td>
+            <td class="rounded-md font-semibold text-red-700 hover:underline">
+              <span
+                class="hover:underline"
+                @click="transactionDetails(transaction.id)"
+                >{{ transaction.transactionID }}</span
+              >
+              <i
+                @click="copyToClipboard(transaction.trackingNumber)"
+                class="fa-regular fa-copy mx-1 hover:text-gray-800"
+              ></i>
+            </td>
             <td>{{ transaction.service }}</td>
             <td class="text-left">{{ transaction.provider }}</td>
             <td>{{ transaction.till }}</td>
