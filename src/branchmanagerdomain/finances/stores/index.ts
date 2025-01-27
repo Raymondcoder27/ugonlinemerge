@@ -145,13 +145,13 @@ export const useBilling = defineStore("billing", () => {
   // }
 
   // using the api
-  
+
   const fetchFloatRequests = async () => {
     return api.get("/till-operator/float-requests")
-        .then((response: AxiosResponse<ApiResponse<any>>) => {
-            floatRequests.value = response.data.data
-        })
-}
+      .then((response: AxiosResponse<ApiResponse<any>>) => {
+        floatRequests.value = response.data.data
+      })
+  }
 
   // function submit() {
   //   let payload = {
@@ -335,29 +335,29 @@ export const useBilling = defineStore("billing", () => {
   async function approveFloatRequest(requestId: any) {
     console.log("Request ID:", requestId); // Debugging
     // return api.post(`/branch-manager/approve-float-request/${requestId}`)
-    return api.post("/branch-manager/approve-float-request/"+requestId)
-        .then((response: AxiosResponse<ApiResponse<any>>) => {
-            console.log("Approve Float Request response:", response.data);
-            fetchFloatRequests();
-            // fetchFloatLedgers();
-            // fetchFloatAllocations();
-        })
-}
+    return api.post("/branch-manager/approve-float-request/" + requestId)
+      .then((response: AxiosResponse<ApiResponse<any>>) => {
+        console.log("Approve Float Request response:", response.data);
+        fetchFloatRequests();
+        // fetchFloatLedgers();
+        // fetchFloatAllocations();
+      })
+  }
 
-  
+
 
   //approve the float request using the api
-//   async function approveFloatRequest(requestId: any) {
-//     console.log("Request ID:", requestId); // Debugging
-//     // return api.post(`/branch-manager/approve-float-request/${requestId}`)
-//     return api.post("/branch-manager/approve-float-request/"+requestId)
-//         .then((response: AxiosResponse<ApiResponse<any>>) => {
-//             console.log("Approve Float Request response:", response.data);
-//             fetchFloatRequests();
-//             // fetchFloatLedgers();
-//             // fetchFloatAllocations();
-//         })
-// }
+  //   async function approveFloatRequest(requestId: any) {
+  //     console.log("Request ID:", requestId); // Debugging
+  //     // return api.post(`/branch-manager/approve-float-request/${requestId}`)
+  //     return api.post("/branch-manager/approve-float-request/"+requestId)
+  //         .then((response: AxiosResponse<ApiResponse<any>>) => {
+  //             console.log("Approve Float Request response:", response.data);
+  //             fetchFloatRequests();
+  //             // fetchFloatLedgers();
+  //             // fetchFloatAllocations();
+  //         })
+  // }
 
   // reject float request using passed in Id and set status to rejected
   function rejectFloatRequest(requestId: any) {
