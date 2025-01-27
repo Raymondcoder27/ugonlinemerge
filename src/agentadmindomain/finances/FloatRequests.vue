@@ -10,6 +10,8 @@ import moment from "moment/moment";
 import { useBalance } from "@/agentadmindomain/balance/stores";
 // import { FloatRequest } from "@/tilloperatordomain/ledger/types/chart";
 import { FloatRequest } from "@/agentadmindomain/finances/types";
+import EditFloatRequestAmount from "@/agentadmindomain/finances/components/EditFloatRequestAmount.vue";
+
 
 const balanceStore = useBalance();
 
@@ -642,6 +644,14 @@ onMounted(() => {
         </table>
       </div>
     </div>
+  </AppModal>
+
+
+  <AppModal v-model="editModalOpen" xl2>
+    <!-- Put here whatever makes you smile -->
+    <!-- Chances are high that you're starting with a form -->
+    <EditFloatRequestAmount @cancel="close"/>
+    <!-- That's also okay -->
   </AppModal>
 </template>
 
