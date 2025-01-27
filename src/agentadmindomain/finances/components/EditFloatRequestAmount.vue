@@ -1,17 +1,16 @@
 <script setup lang="ts">
-
-import {onMounted, reactive, type Ref, ref} from "vue";
+import { onMounted, reactive, type Ref, ref } from "vue";
 // import {useProviderStore} from "@/agentadmindomain/providers/stores";
 import { useBilling } from "@/agentadmindomain/finances/stores";
 // import type {CreateServiceProvider} from "@/agentadmindomain/providers/types";
-import type {FloatRequest} from "@/agentadmindomain/finances/types";
-import {useNotificationsStore} from "@/stores/notifications";
-import type {ApiError} from "@/types";
+import type { FloatRequest } from "@/agentadmindomain/finances/types";
+import { useNotificationsStore } from "@/stores/notifications";
+import type { ApiError } from "@/types";
 
 // const store = useProviderStore()
-const store = useBilling()
-const loading: Ref<boolean> = ref(false)
-const notify =useNotificationsStore()
+const store = useBilling();
+const loading: Ref<boolean> = ref(false);
+const notify = useNotificationsStore();
 
 // let form: CreateFloatRequest = reactive({
 //   name: "",
@@ -32,30 +31,30 @@ let form: FloatRequest = reactive({
   branch: "",
   amount: "",
   status: "",
-})
-const emit = defineEmits(['cancel'])
+});
+const emit = defineEmits(["cancel"]);
 
 onMounted(() => {
-  let data = JSON.parse(<string>localStorage.getItem("floatRequestEdit"))
+  let data = JSON.parse(<string>localStorage.getItem("floatRequestEdit"));
 
-  form.name = data.name
-  form.branch = data.branch
-  form.amount = data.amount
-  form.status = data.status
-//   form.displayName = data.displayName
-//   form.physicalAddress = data.physicalAddress
-//   form.inquiryEmail = data.inquiryEmail
-//   form.inquiryPhoneNumber = data.inquiryPhoneNumber
-//   form.username = data.username
-})
+  form.name = data.name;
+  form.branch = data.branch;
+  form.amount = data.amount;
+  form.status = data.status;
+  //   form.displayName = data.displayName
+  //   form.physicalAddress = data.physicalAddress
+  //   form.inquiryEmail = data.inquiryEmail
+  //   form.inquiryPhoneNumber = data.inquiryPhoneNumber
+  //   form.username = data.username
+});
 
-function submit(){
-  loading.value = true
-  let data = JSON.parse(<string>localStorage.getItem("floatRequestEdit"))
+function submit() {
+  loading.value = true;
+  let data = JSON.parse(<string>localStorage.getItem("floatRequestEdit"));
 
-  let id = data.id
+  let id = data.id;
   let payload = {
-    name:form.name,
+    name: form.name,
     branch: form.branch,
     amount: form.amount,
     status: form.status,
@@ -65,26 +64,28 @@ function submit(){
     // inquiry_phone_number:form.inquiryPhoneNumber,
     // physical_address:form.physicalAddress,
     // username:form.username
-  }
+  };
   store
-      .editFloatRequest(id, payload)
-      .then(() => {
-        loading.value = false
-        window.location.reload()
-        notify.error("Edited")
-      })
-      .catch((error:ApiError) => {
-        loading.value = false
-        notify.error(error.response.data.message)
-      })
+    .editFloatRequest(id, payload)
+    .then(() => {
+      loading.value = false;
+      window.location.reload();
+      notify.error("Edited");
+    })
+    .catch((error: ApiError) => {
+      loading.value = false;
+      notify.error(error.response.data.message);
+    });
 }
-
 </script>
 
 <template>
   <div class="bg-white py-5">
     <p class="text-xl font-bold">Edit Float Request Amount</p>
-    <p class="text-sm text-gray-500" v-if="form.name"><b>{{form.name}}</b> provides a services consumed by the general public of Uganda.</p>
+    <p class="text-sm text-gray-500" v-if="form.name">
+      <b>{{ form.name }}</b> provides a services consumed by the general public
+      of Uganda.
+    </p>
     <form @submit.prevent="submit" class="pt-5">
       <!-- <div class="flex">
         <div class="cell-full">
@@ -106,14 +107,26 @@ function submit(){
 
       <div class="flex">
         <div class="cell">
-          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Branch</label>
-          <input type="text" v-model="form.branch" class="noFocus form-element e-input w-full"
-                 required />
+          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1"
+            >Branch</label
+          >
+          <input
+            type="text"
+            v-model="form.branch"
+            class="noFocus form-element e-input w-full"
+            required
+          />
         </div>
         <div class="cell">
-          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1">Amount</label>
-          <input type="text" v-model="form.amount" class="noFocus form-element e-input w-full"
-                 required />
+          <label class="block uppercase text-neutral-600 text-xs font-bold mb-1"
+            >Amount</label
+          >
+          <input
+            type="text"
+            v-model="form.amount"
+            class="noFocus form-element e-input w-full"
+            required
+          />
         </div>
       </div>
 
@@ -146,7 +159,10 @@ function submit(){
           <button class="button" type="submit">
             <i class="fa-solid fa-hand-pointer"></i> Submit
             <span class="lds-ring mx-1" v-if="loading">
-              <div></div><div></div><div></div><div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
             </span>
           </button>
         </div>
