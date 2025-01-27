@@ -278,10 +278,6 @@ export const useBilling = defineStore("billing", () => {
 
   async function reduceFloatLedger(requestId: any) {
     //  This is local storage 
-
-
-
-
     // end of local storage
 
     console.log("Approving float request with ID:", requestId);
