@@ -354,7 +354,7 @@ onMounted(() => {
           </div>
           <div class="">
               <button
-                @click="modalOpen = true"
+                @click="floatRequestModalOpen = true"
                 class="button btn-sm"
                 type="button"
               >
@@ -695,7 +695,7 @@ onMounted(() => {
     <!-- That's also okay -->
   </AppModal>
 
-  <AppModal v-model="modalOpen" xl2>
+  <AppModal v-model="floatRequestModalOpen" xl2>
       <!-- Your modal content goes here -->
       <RequestFloat @floatAllocated="close" :close="close" />
     </AppModal>
