@@ -24,8 +24,13 @@ export interface TotalFinalFloat {
 export const useBalance = defineStore("balance", () => {
   // Reactive state for total balance
   const totalBalance = reactive<TotalBalance>({
-    prevBalance: 120000000, // Initial previous balance
-    currentBalance: 120000000, // Initial current balance
+    prevBalance: 300000000, // Initial previous balance
+    currentBalance: 300000000, // Initial current balance
+  });
+
+  const finalBalance = reactive<TotalBalance>({
+    prevBalance: 120000000,
+    currentBalance: 120000000,
   });
 
   const availableFloat = reactive<TotalAvailableFloat>({
@@ -48,26 +53,26 @@ export const useBalance = defineStore("balance", () => {
   // async function fetchTotalBalance() {
   //   // Simulate fetching data (replace with actual API call)
   //   const fetchedBalance = {
-  //     prevBalance: totalBalance.current, // Setting previous balance to the current value
+  //     prevBalance: finalBalance.current, // Setting previous balance to the current value
   //     currentBalance: 400000000, // Example of updating balance to a new value
   //   };
     
   //   // Update totalBalance reactive state
-  //   totalBalance.prev = fetchedBalance.prev;
-  //   totalBalance.current = fetchedBalance.current;
+  //   finalBalance.prev = fetchedBalance.prev;
+  //   finalBalance.current = fetchedBalance.current;
   // }
 
 
   // Increase the total balance and update "prev"
   function increaseTotalBalance(amount: number) {
-    totalBalance.prevBalance = totalBalance.currentBalance;
-    totalBalance.currentBalance += amount;
+    finalBalance.prevBalance = finalBalance.currentBalance;
+    finalBalance.currentBalance += amount;
   }
 
   // Decrease the total balance and update "prev"
   function decreaseTotalBalance(amount: number) {
-    totalBalance.prevBalance = totalBalance.currentBalance;
-    totalBalance.currentBalance -= amount;
+    finalBalance.prevBalance = finalBalance.currentBalance;
+    finalBalance.currentBalance -= amount;
   }
 
   // pass in the requestId
@@ -100,9 +105,9 @@ async function approveFloatRequest(requestId: any) {
     return;
   }
   // console.log("Float request approved:", data);
-  totalBalance.prevBalance = totalBalance.currentBalance;
-  // totalBalance.currentBalance -= floatRequest.amount; // Example of updating balance
-  totalBalance.currentBalance -= floatRequest.amount;
+  finalBalance.prevBalance = finalBalance.currentBalance;
+  // finalBalance.currentBalance -= floatRequest.amount; // Example of updating balance
+  finalBalance.currentBalance -= floatRequest.amount;
 }
 
 
@@ -111,13 +116,13 @@ async function approveFloatRequest(requestId: any) {
 async function fetchTotalBalance() {
   console.log("Fetching balance...");
   const fetchedBalance = {
-    prevBalance: totalBalance.prevBalance, // Setting previous balance to the current value
-    currentBalance: totalBalance.currentBalance, // Example of updating balance to a new value
+    prevBalance: finalBalance.prevBalance, // Setting previous balance to the current value
+    currentBalance: finalBalance.currentBalance, // Example of updating balance to a new value
   };
 
   console.log("Fetched balance:", fetchedBalance); // Debugging
-  totalBalance.prevBalance = fetchedBalance.prevBalance;
-  totalBalance.currentBalance = fetchedBalance.currentBalance;
+  finalBalance.prevBalance = fetchedBalance.prevBalance;
+  finalBalance.currentBalance = fetchedBalance.currentBalance;
   console.log("Updated balance in store:", totalBalance); // Debugging
 }
 
