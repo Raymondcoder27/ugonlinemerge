@@ -4,7 +4,7 @@ import { type Ref, ref, reactive, watch } from "vue";
 import { useAccounts } from "@/branchmanagerdomain/accounts/stores";
 import { useNotificationsStore } from "@/stores/notifications";
 import { defineEmits } from "vue";
-import { useBilling } from "@/branchmanagerdomain/finance/stores";
+import { useBilling } from "@/branchmanagerdomain/finances/stores";
 import { useBalance } from "@/branchmanagerdomain/balance/stores";
 // import { RequestFloat } from "../types/index";
 
