@@ -13,6 +13,23 @@ import { FloatRequest } from "@/agentadmindomain/finances/types";
 import EditFloatRequestAmount from "@/agentadmindomain/finances/components/EditFloatRequestAmount.vue";
 
 
+
+const editModalOpen: Ref<boolean> = ref(false);
+const viewModalOpen: Ref<boolean> = ref(false);
+
+
+  function editFloatRequest(floatRequest:FloatRequest) {
+  localStorage.setItem("floatRequestEdit", JSON.stringify(floatRequest))
+  editModalOpen.value = true;
+}
+function close() {
+  modalOpen.value = false;
+  viewModalOpen.value = false;
+  editModalOpen.value = false;
+}
+
+
+
 const balanceStore = useBalance();
 
 const billingStore = useBilling();
@@ -473,6 +490,16 @@ onMounted(() => {
                 >
                   <i class="fa-solid fa-check"></i>
                   Approve</span
+                >
+
+
+                <!-- edit float request amount -->
+                <span
+                  class="text-xs rounded-md px-1 py-0.5 ml-1 font-semibold text-white bg-blue-600 hover:text-blue-700 hover:bg-blue-200"
+                  @click="editFloatRequest(request)"
+                >
+                  <i class="fa-solid fa-edit"></i>
+                  Edit</span
                 >
 
                 <span
