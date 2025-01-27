@@ -53,26 +53,26 @@ export const useBalance = defineStore("balance", () => {
   // async function fetchTotalBalance() {
   //   // Simulate fetching data (replace with actual API call)
   //   const fetchedBalance = {
-  //     prevBalance: finalBalance.current, // Setting previous balance to the current value
+  //     prevBalance: totalBalance.current, // Setting previous balance to the current value
   //     currentBalance: 400000000, // Example of updating balance to a new value
   //   };
     
   //   // Update totalBalance reactive state
-  //   finalBalance.prev = fetchedBalance.prev;
-  //   finalBalance.current = fetchedBalance.current;
+  //   totalBalance.prev = fetchedBalance.prev;
+  //   totalBalance.current = fetchedBalance.current;
   // }
 
 
   // Increase the total balance and update "prev"
   function increaseTotalBalance(amount: number) {
-    finalBalance.prevBalance = finalBalance.currentBalance;
-    finalBalance.currentBalance += amount;
+    totalBalance.prevBalance = totalBalance.currentBalance;
+    totalBalance.currentBalance += amount;
   }
 
   // Decrease the total balance and update "prev"
   function decreaseTotalBalance(amount: number) {
-    finalBalance.prevBalance = finalBalance.currentBalance;
-    finalBalance.currentBalance -= amount;
+    totalBalance.prevBalance = totalBalance.currentBalance;
+    totalBalance.currentBalance -= amount;
   }
 
   // pass in the requestId
@@ -105,9 +105,9 @@ async function approveFloatRequest(requestId: any) {
     return;
   }
   // console.log("Float request approved:", data);
-  finalBalance.prevBalance = finalBalance.currentBalance;
-  // finalBalance.currentBalance -= floatRequest.amount; // Example of updating balance
-  finalBalance.currentBalance -= floatRequest.amount;
+  totalBalance.prevBalance = totalBalance.currentBalance;
+  // totalBalance.currentBalance -= floatRequest.amount; // Example of updating balance
+  totalBalance.currentBalance -= floatRequest.amount;
 }
 
 
@@ -116,13 +116,13 @@ async function approveFloatRequest(requestId: any) {
 async function fetchTotalBalance() {
   console.log("Fetching balance...");
   const fetchedBalance = {
-    prevBalance: finalBalance.prevBalance, // Setting previous balance to the current value
-    currentBalance: finalBalance.currentBalance, // Example of updating balance to a new value
+    prevBalance: totalBalance.prevBalance, // Setting previous balance to the current value
+    currentBalance: totalBalance.currentBalance, // Example of updating balance to a new value
   };
 
   console.log("Fetched balance:", fetchedBalance); // Debugging
-  finalBalance.prevBalance = fetchedBalance.prevBalance;
-  finalBalance.currentBalance = fetchedBalance.currentBalance;
+  totalBalance.prevBalance = fetchedBalance.prevBalance;
+  totalBalance.currentBalance = fetchedBalance.currentBalance;
   console.log("Updated balance in store:", totalBalance); // Debugging
 }
 

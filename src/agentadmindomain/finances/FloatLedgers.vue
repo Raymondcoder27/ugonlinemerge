@@ -106,44 +106,6 @@ onMounted(() => {
   // balanceStore.increaseTotalBalance(); // Increase balance by 100
 });
 
-// function decreaseBalance() {
-//   balanceStore.decreaseTotalBalance(5000000); // Decrease by 5 million
-// }
-
-// Dynamically compute the balances for each transaction
-// const computedTransactions = computed(() => {
-//   // Ensure there is a valid starting balance and transactions
-//   if (store.floatLedgers.length === 0) {
-//     return [];
-//   }
-
-//   // Start with the balance before any transactions
-//   let runningBalance = balanceStore.totalBalance.current;
-
-//   // Reverse the transactions to process them chronologically
-//   const transactionsWithBalances = store.floatLedgers
-//   .slice()
-//   .reverse()
-//   .map((transaction) => {
-//     if (transaction.description === "Recharge") {
-//       // Set balance directly for recharge transactions
-//       runningBalance = transaction.amount;
-//     } else {
-//       // Adjust balance correctly for other transactions
-//       runningBalance += transaction.amount;
-//     }
-
-//     return {
-//       ...transaction,
-//       balance: runningBalance,
-//     };
-//   })
-//   .reverse(); // Reverse back to display in the original order
-//  // Reverse back to display in the original order
-
-//   return transactionsWithBalances;
-// });
-
 const computedLedgerWithBalance = computed(() => {
   const start = (page.value - 1) * limit.value;
   const end = start + limit.value;
