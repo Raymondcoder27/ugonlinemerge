@@ -484,8 +484,16 @@ onMounted(() => {
               <!-- Third Case: Fallback, no manager assigned -->
               <div v-else>
                 <!-- <td> -->
-                <span
+                <!-- <span
                   class="text-xs rounded-md px-1 py-0.5 font-semibold text-white bg-blue-600 hover:bg-blue-200 hover:text-blue-700"
+                  @click="approveFloatRequest(request.id)"
+                >
+                  <i class="fa-solid fa-check"></i>
+                  Approve</span
+                > -->
+
+                <span
+                  class="text-xs rounded-md px-1 py-0.5 font-semibold text-white bg-green-600 hover:text-green-800 hover:bg-green-300"
                   @click="approveFloatRequest(request.id)"
                 >
                   <i class="fa-solid fa-check"></i>
