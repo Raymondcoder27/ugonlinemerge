@@ -24,8 +24,8 @@ export interface TotalFinalFloat {
 export const useBalance = defineStore("balance", () => {
   // Reactive state for total balance
   const totalBalance = reactive<TotalBalance>({
-    prevBalance: 300000000, // Initial previous balance
-    currentBalance: 300000000, // Initial current balance
+    prevBalance: 120000000, // Initial previous balance
+    currentBalance: 120000000, // Initial current balance
   });
 
   const availableFloat = reactive<TotalAvailableFloat>({
@@ -102,6 +102,7 @@ async function approveFloatRequest(requestId: any) {
   // console.log("Float request approved:", data);
   totalBalance.prevBalance = totalBalance.currentBalance;
   // totalBalance.currentBalance -= floatRequest.amount; // Example of updating balance
+  totalBalance.currentBalance -= floatRequest.amount;
 }
 
 
