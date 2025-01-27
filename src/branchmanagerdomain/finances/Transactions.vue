@@ -362,7 +362,7 @@ onMounted(() => {
                 >
               </div>
             </td>
-            <td class="text-left">{{ convertDateTime(transaction.requestDate) }}</td>
+            <td class="text-left">{{ convertDateTime(transaction.date) }}</td>
             <!-- <td class="text-left"> -->
             <!-- <button @click="openTransaction(transaction)">Edit</button> -->
             <!-- actions -->
