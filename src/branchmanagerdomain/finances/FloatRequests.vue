@@ -50,6 +50,8 @@ const selectedFloatRequest: Ref<FloatRequest | undefined> = ref();
 
 const modalOpen: Ref<boolean> = ref(false);
 
+const floatRequestModalOpen: Ref<boolean> = ref(false);
+
 function view(request: FloatRequest) {
   modalOpen.value = true;
   selectedFloatRequest.value = request;
