@@ -90,8 +90,8 @@ export const useBilling = defineStore("billing", () => {
   const backofficeUsers = ref<BackofficeUser[]>(dummyBackofficeUsers);
   const tillOperators = ref<TillOperator[]>(dummyTillOperators);
   const floatAllocations = ref<FloatAllocation[]>(dummyFloatAllocations);
-  // const floatRequests = ref<FloatRequest[]>(dummyFloatRequests);
-  const floatRequests = ref<FloatRequest[]>([]);
+  const floatRequests = ref<FloatRequest[]>(dummyFloatRequests);
+  // const floatRequests = ref<FloatRequest[]>([]);
 
 
   // const floatRequests = JSON.parse(localStorage.getItem('floatRequestToBranchManagerLocalStorage') || '[]');
