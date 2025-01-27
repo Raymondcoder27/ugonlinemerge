@@ -11,6 +11,8 @@ import { useBalance } from "@/branchmanagerdomain/balance/stores";
 // import { FloatRequest } from "@/tilloperatordomain/ledger/types/chart";
 import { FloatRequest } from "@/branchmanagerdomain/finances/types";
 import EditFloatRequestAmount from "@/branchmanagerdomain/finances/components/EditFloatRequestAmount.vue";
+import RequestFloat from "@/branchmanagerdomain/finance/components/RequestFloat.vue";
+
 
 
 const editModalOpen: Ref<boolean> = ref(false);
@@ -692,6 +694,11 @@ onMounted(() => {
     <EditFloatRequestAmount @cancel="close"/>
     <!-- That's also okay -->
   </AppModal>
+
+  <AppModal v-model="modalOpen" xl2>
+      <!-- Your modal content goes here -->
+      <RequestFloat @floatAllocated="close" :close="close" />
+    </AppModal>
 </template>
 
 <style scoped>
