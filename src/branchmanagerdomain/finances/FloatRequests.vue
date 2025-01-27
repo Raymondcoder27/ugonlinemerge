@@ -12,7 +12,6 @@ import { useBalance } from "@/branchmanagerdomain/balance/stores";
 import { FloatRequest } from "@/branchmanagerdomain/finances/types";
 import EditFloatRequestAmount from "@/branchmanagerdomain/finances/components/EditFloatRequestAmount.vue";
 
-const balanceStore = useBalance();
 
 const editModalOpen: Ref<boolean> = ref(false);
 const viewModalOpen: Ref<boolean> = ref(false);
