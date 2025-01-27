@@ -14,8 +14,6 @@ import RequestFloat from "@/tilloperatordomain/ledger/components/RequestFloat.vu
 import { useBalance } from "@/tilloperatordomain/balance/stores";
 const balanceStore = useBalance();
 
-
-
 const pageInput = ref(1);
 const changePageSize = () => {
   page.value = 1;
