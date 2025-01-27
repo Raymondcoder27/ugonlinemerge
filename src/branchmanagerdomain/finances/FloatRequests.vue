@@ -482,7 +482,7 @@ onMounted(() => {
                   <i class="fa-solid fa-edit"></i>
                   Edit</span
                 >
-                
+
                 <span
                   class="text-xs rounded-md px-1 py-0.5 ml-1 font-semibold text-white bg-red-600 hover:text-white hover:bg-red-700"
                   @click="rejectFloatRequest(request.id)"
@@ -652,6 +652,13 @@ onMounted(() => {
         </table>
       </div>
     </div>
+  </AppModal>
+
+  <AppModal v-model="editModalOpen" xl2>
+    <!-- Put here whatever makes you smile -->
+    <!-- Chances are high that you're starting with a form -->
+    <EditFloatRequestAmount @cancel="close"/>
+    <!-- That's also okay -->
   </AppModal>
 </template>
 
