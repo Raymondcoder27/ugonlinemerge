@@ -43,6 +43,11 @@ export const useBalance = defineStore("balance", () => {
     currentFinalFloat: 300000000,
   });
 
+  const availableFinalBalance = reactive<TotalBalance>({
+    prevBalance: 300000000,
+    currentBalance: 300000000,
+  });
+
   const billingStore = useBilling();
 
   watchEffect(() => {
@@ -144,6 +149,7 @@ async function fetchFinalFloatBalance() {
     availableBalance,
     availableFloat,
     finalFloat,
+    availableFinalBalance,
     approveFloatRequest,
     fetchTotalBalance,
     fetchFinalFloatBalance,
