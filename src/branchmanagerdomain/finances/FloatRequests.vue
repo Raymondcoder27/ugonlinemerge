@@ -11,7 +11,7 @@ import { useBalance } from "@/branchmanagerdomain/balance/stores";
 // import { FloatRequest } from "@/tilloperatordomain/ledger/types/chart";
 import { FloatRequest } from "@/branchmanagerdomain/finances/types";
 import EditFloatRequestAmount from "@/branchmanagerdomain/finances/components/EditFloatRequestAmount.vue";
-import RequestFloat from "@/branchmanagerdomain/finance/components/RequestFloat.vue";
+import RequestFloat from "@/branchmanagerdomain/finances/components/RequestFloat.vue";
 
 
 
